@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="An explanation of the symmetry structure of the non-trivial zeros of the Riemann zeta function, using 2-point and 4-point orbits." />
+  <title>Non-trivial Zeros of the Riemann Zeta Function and Symmetry Orbits</title>
+  <link rel="stylesheet" href="../assets/style.css" />
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body class="article-page">
+  <div class="sitebar">
+    <a href="../index.html">← Back to articles</a>
+    &nbsp;·&nbsp;
+    <a href="riemann-zeta-symmetry.html">한국어</a>
+  </div>
+
+  <header>
+    <div class="hero">
+      <div class="eyebrow">RIEMANN ZETA FUNCTION · SYMMETRY · ORBITS</div>
+      <h1>Why Do Non-trivial Zeros Appear<br />in Orbits of Two or Four?</h1>
+      <p>
+        We use the two basic symmetries of the Riemann zeta function to organize its non-trivial zeros,
+        and to see why the critical line \(\operatorname{Re}(s)=1/2\) is structurally special.
+      </p>
+    </div>
+  </header>
+
+  <nav>
+    <div class="inner">
+      <a href="#zeros">Non-trivial zeros</a>
+      <a href="#symmetry">Two symmetries</a>
+      <a href="#four-points">Four points</a>
+      <a href="#group">Symmetry group</a>
+      <a href="#critical-line">Critical line</a>
+      <a href="#rh">Riemann Hypothesis</a>
+      <a href="#limit">What remains open</a>
+    </div>
+  </nav>
+
+  <main>
+    <article>
+      <p class="lead">
+        The Riemann Hypothesis is usually stated as: every non-trivial zero of the zeta function has real part \(1/2\).
+        The symmetry of the zeta function lets us rewrite this statement in a useful orbit-theoretic form.
+      </p>
+
+      <div class="box key">
+        <strong>Key viewpoint</strong>
+        A non-trivial zero generally generates a four-point symmetry orbit. On the line
+        \(\operatorname{Re}(s)=1/2\), pairs of those points coincide, leaving a two-point orbit.
+      </div>
+
+      <section id="zeros">
+        <h2>1. Non-trivial zeros</h2>
+        <p>Write a complex number as</p>
+        $$
+        s=\sigma+it.
+        $$
+        <p>Here \(\sigma=\operatorname{Re}(s)\) and \(t=\operatorname{Im}(s)\).</p>
+
+        <p>The non-trivial zeros of the Riemann zeta function lie in the critical strip</p>
+        $$
+        0<\operatorname{Re}(s)<1.
+        $$
+
+        <p>The Riemann Hypothesis states that every non-trivial zero \(\rho\) satisfies</p>
+        $$
+        \boxed{\operatorname{Re}(\rho)=\frac12}.
+        $$
+      </section>
+
+      <section id="symmetry">
+        <h2>2. Two symmetries of the zeta function</h2>
+
+        <h3>2.1 Complex-conjugation symmetry</h3>
+        <p>The zeta function satisfies</p>
+        $$
+        \zeta(\overline{s})=\overline{\zeta(s)}.
+        $$
+        <p>Therefore, if</p>
+        $$
+        \zeta(\rho)=0,
+        $$
+        <p>then</p>
+        $$
+        \zeta(\overline{\rho})=0.
+        $$
+        <p>So if \(\sigma+it\) is a zero, then \(\sigma-it\) is also a zero.</p>
+
+        <h3>2.2 Functional-equation symmetry</h3>
+        <p>The Riemann zeta function satisfies the functional equation</p>
+        $$
+        \zeta(s)=
+        2^s\pi^{s-1}
+        \sin\left(\frac{\pi s}{2}\right)
+        \Gamma(1-s)\zeta(1-s).
+        $$
+
+        <p>For non-trivial zeros, this symmetry implies</p>
+        $$
+        \zeta(\rho)=0
+        \quad\Longrightarrow\quad
+        \zeta(1-\rho)=0.
+        $$
+      </section>
+
+      <section id="four-points">
+        <h2>3. Four symmetric points from one zero</h2>
+        <p>Start with a non-trivial zero</p>
+        $$
+        \rho=\sigma+it.
+        $$
+
+        <p>The two symmetries generate the four candidates</p>
+        $$
+        \boxed{
+        \rho,\quad
+        \overline{\rho},\quad
+        1-\rho,\quad
+        1-\overline{\rho}
+        }.
+        $$
+
+        <p>In coordinates, these are</p>
+        $$
+        \boxed{
+        \sigma+it,\quad
+        \sigma-it,\quad
+        (1-\sigma)-it,\quad
+        (1-\sigma)+it
+        }.
+        $$
+
+        <div class="orbit" aria-label="Four-point symmetry orbit">
+          <div class="point">\(\sigma+it\)</div>
+          <div class="axis">Re(s) = 1/2</div>
+          <div class="point">\((1-\sigma)+it\)</div>
+          <div class="point">\(\sigma-it\)</div>
+          <div class="point">\((1-\sigma)-it\)</div>
+        </div>
+
+        <p>For example, if \(0.3+20i\) were a zero, symmetry would also force</p>
+        $$
+        0.3-20i,\quad 0.7+20i,\quad 0.7-20i
+        $$
+        <p>to be zeros.</p>
+      </section>
+
+      <section id="group">
+        <h2>4. The symmetry group and its orbits</h2>
+        <p>Define</p>
+        $$
+        C(s)=\overline{s},
+        \qquad
+        H(s)=1-\overline{s}.
+        $$
+
+        <p>Then</p>
+        $$
+        C^2=I,\qquad H^2=I,\qquad CH=HC.
+        $$
+
+        <p>The four transformations</p>
+        $$
+        G=\{I,C,H,CH\}
+        $$
+        <p>form a group isomorphic to the Klein four-group:</p>
+        $$
+        \boxed{G\cong \mathbb{Z}_2\times\mathbb{Z}_2}.
+        $$
+
+        <p>By the orbit-stabilizer theorem, an orbit size must divide \(|G|=4\). Therefore the only possible orbit sizes are</p>
+        $$
+        \boxed{1,\;2,\;4}.
+        $$
+        <p>In particular, a three-point orbit is impossible.</p>
+      </section>
+
+      <section id="critical-line">
+        <h2>5. Why does the orbit collapse to two points on \(\operatorname{Re}(s)=1/2\)?</h2>
+        <p>Consider the left-right reflection</p>
+        $$
+        H(s)=1-\overline{s}.
+        $$
+
+        <p>A fixed point of this reflection satisfies</p>
+        $$
+        H(s)=s,
+        $$
+        <p>so</p>
+        $$
+        1-\overline{s}=s.
+        $$
+
+        <p>Substituting \(s=\sigma+it\),</p>
+        $$
+        1-\sigma+it=\sigma+it,
+        $$
+        <p>and therefore</p>
+        $$
+        \boxed{\sigma=\frac12}.
+        $$
+
+        <p>Now let</p>
+        $$
+        \rho=\frac12+it.
+        $$
+        <p>Then</p>
+        $$
+        1-\rho=\frac12-it=\overline{\rho},
+        $$
+        <p>and</p>
+        $$
+        1-\overline{\rho}=\rho.
+        $$
+
+        <p>Thus the four formal images collapse to only two distinct points.</p>
+
+        <div class="box ok">
+          <strong>Conclusion</strong>
+          For a non-trivial zero,
+          $$
+          \boxed{
+          |\operatorname{Orb}(\rho)|=2
+          \iff
+          \operatorname{Re}(\rho)=\frac12
+          }.
+          $$
+        </div>
+      </section>
+
+      <section>
+        <h2>6. Why is there no one-point orbit?</h2>
+        <p>A one-point orbit would have to be fixed by both symmetries.</p>
+
+        <p>From</p>
+        $$
+        \rho=\overline{\rho}
+        $$
+        <p>we get \(t=0\). From</p>
+        $$
+        \rho=1-\rho
+        $$
+        <p>we get \(\rho=1/2\).</p>
+
+        <p>But</p>
+        $$
+        \zeta\left(\frac12\right)\neq0.
+        $$
+
+        <p>Hence a non-trivial zero cannot have a one-point orbit. The only possibilities are therefore</p>
+        $$
+        \boxed{\text{two-point orbit or four-point orbit}}.
+        $$
+      </section>
+
+      <section id="rh">
+        <h2>7. Rewriting the Riemann Hypothesis in terms of orbits</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Location of a non-trivial zero</th>
+              <th>Number of distinct symmetric points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>\(\operatorname{Re}(\rho)=1/2\)</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>\(\operatorname{Re}(\rho)\neq1/2\)</td>
+              <td>4</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="box key math-summary">
+          $$
+          \boxed{
+          \text{RH}
+          \iff
+          \text{every non-trivial zero has an orbit of size }2
+          }
+          $$
+
+          $$
+          \boxed{
+          \text{RH}
+          \iff
+          \text{there is no non-trivial zero orbit of size }4
+          }
+          $$
+        </div>
+      </section>
+
+      <section id="limit">
+        <h2>8. Why this is not a proof of the Riemann Hypothesis</h2>
+
+        <div class="box warn">
+          <strong>Important</strong>
+          Everything above organizes the known symmetry of the non-trivial zeros. It does not exclude zeros away from the critical line.
+        </div>
+
+        <p>If a zero \(\sigma+it\) existed away from the critical line, then symmetry would simply produce the valid four-point orbit</p>
+        $$
+        \sigma+it,\quad
+        \sigma-it,\quad
+        (1-\sigma)+it,\quad
+        (1-\sigma)-it.
+        $$
+
+        <p>This four-point pattern does not contradict the known symmetries of the zeta function.</p>
+
+        <p>So the real unresolved question is</p>
+        <div class="box key math-summary">
+          $$
+          \boxed{
+          \text{Why are there no four-point non-trivial zero orbits for the Riemann zeta function?}
+          }
+          $$
+        </div>
+
+        <p>
+          Proving that statement requires some additional structure beyond symmetry alone.
+          That missing step is essentially the Riemann Hypothesis.
+        </p>
+      </section>
+
+      <section>
+        <h2>9. One-sentence summary</h2>
+        <p class="lead">
+          The symmetry of the zeta function explains why \(1/2\) is the unique central line,
+          but it does not explain why every non-trivial zero must lie on that line.
+          That gap is the heart of the Riemann Hypothesis.
+        </p>
+      </section>
+    </article>
+  </main>
+
+  <footer>
+    Rendered with MathJax · Published with GitHub Pages
+  </footer>
+</body>
+</html>
