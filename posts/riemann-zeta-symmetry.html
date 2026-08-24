@@ -3,10 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="리만 제타 함수 비자명 영점의 대칭 구조와 리만가설을 2점/4점 궤도 관점에서 설명합니다." />
+  <meta name="description" content="리만 제타 함수의 비자명 영점이 임계띠 안에서 서로 다른 2점 또는 4점 대칭 궤도를 이루는 조건을 설명합니다." />
   <title>리만 제타 함수의 비자명 영점과 대칭 궤도</title>
   <link rel="stylesheet" href="../assets/style.css" />
-
   <script>
     window.MathJax = {
       tex: {
@@ -19,106 +18,71 @@
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body class="article-page">
-  <div class="sitebar"><a href="../index.html">← 글 목록으로</a></div>
+  <div class="sitebar">
+    <a href="../index.html">← 글 목록으로</a>
+    &nbsp;·&nbsp;
+    <a href="riemann-zeta-symmetry-en.html">English</a>
+  </div>
+
   <header>
     <div class="hero">
-      <div class="eyebrow">RIEMANN ZETA FUNCTION · SYMMETRY · ORBITS</div>
-      <h1>리만 제타 함수의 비자명 영점은<br />왜 2개 또는 4개로 나타나는가?</h1>
+      <div class="eyebrow">RIEMANN ZETA FUNCTION · DISTINCT ORBITS</div>
+      <h1>비자명한 영점은 왜<br />서로 다른 2점 또는 4점으로 나타나는가?</h1>
       <p>
-        제타 함수의 두 대칭을 이용해 비자명한 영점의 궤도 구조를 정리하고,
-        왜 critical line \(\operatorname{Re}(s)=1/2\)가 특별한지 살펴봅니다.
+        임계띠 안의 영점에서 출발해 대칭점들이 모두 영역 안에 남는지,
+        그리고 언제 실제로 서로 다른 네 복소수가 되는지를 분명하게 정리합니다.
       </p>
     </div>
   </header>
 
   <nav>
     <div class="inner">
-      <a href="#zeros">비자명 영점</a>
+      <a href="#setting">문제 설정</a>
       <a href="#symmetry">두 대칭</a>
-      <a href="#four-points">4개 대칭점</a>
-      <a href="#group">대칭군</a>
-      <a href="#critical-line">Critical line</a>
-      <a href="#rh">리만가설 표현</a>
-      <a href="#limit">중요한 한계</a>
+      <a href="#inside">임계띠 보존</a>
+      <a href="#distinct">서로 다른 네 점</a>
+      <a href="#shift">좌표 이동</a>
+      <a href="#orbits">2점과 4점</a>
+      <a href="#limit">증명의 한계</a>
     </div>
   </nav>
 
   <main>
     <article>
       <p class="lead">
-        리만가설은 흔히 “모든 비자명한 영점의 실수부가 \(1/2\)이다”라고 표현합니다.
-        그런데 제타 함수의 대칭을 따라가면 이 문장을 조금 다른 형태로 볼 수 있습니다.
+        여기서 “4점 궤도”라는 말은 네 식을 형식적으로 나열한다는 뜻이 아닙니다.
+        <strong>임계띠 안에 있는 서로 다른 네 복소수</strong>가 모두 영점이라는 뜻입니다.
       </p>
 
-      <div class="box key">
-        <strong>핵심 관점</strong>
-        비자명한 영점은 대칭에 의해 일반적으로 4점 궤도를 만들지만,
-        \(\operatorname{Re}(s)=1/2\) 위에서는 대칭점들이 겹쳐 2점 궤도가 됩니다.
-      </div>
-
-      <section id="zeros">
-        <h2>1. 비자명한 영점</h2>
-        <p>복소수를 다음과 같이 씁니다.</p>
+      <section id="setting">
+        <h2>1. 문제 설정</h2>
+        <p>비자명한 영점을</p>
         $$
-        s=\sigma+it
+        \rho=\sigma+it,
+        \qquad 0<\sigma<1
         $$
-        <p>여기서 \(\sigma=\operatorname{Re}(s)\)이고 \(t=\operatorname{Im}(s)\)입니다.</p>
-        <p>리만 제타 함수의 비자명한 영점은 임계띠</p>
+        <p>라고 하겠습니다. 비자명한 영점은 실수축 위에 없으므로</p>
         $$
-        0<\operatorname{Re}(s)<1
+        t\neq0
         $$
-        <p>안에 존재합니다.</p>
-        <p>리만가설은 모든 비자명한 영점 \(\rho\)에 대해</p>
-        $$
-        \boxed{\operatorname{Re}(\rho)=\frac12}
-        $$
-        <p>라고 주장합니다.</p>
+        <p>입니다.</p>
       </section>
 
       <section id="symmetry">
-        <h2>2. 제타 함수의 두 가지 대칭</h2>
-
-        <h3>2.1 복소켤레 대칭</h3>
+        <h2>2. 영점에 작용하는 두 대칭</h2>
+        <p>제타 함수는 복소켤레 대칭과 함수방정식 대칭을 가집니다.</p>
         $$
-        \zeta(\overline{s})=\overline{\zeta(s)}
+        \zeta(\overline{s})=\overline{\zeta(s)},
+        \qquad
+        \zeta(\rho)=0\Rightarrow\zeta(1-\rho)=0
         $$
-        <p>따라서 \(\zeta(\rho)=0\)이면</p>
-        $$
-        \zeta(\overline{\rho})=0
-        $$
-        <p>입니다. 즉 \(\sigma+it\)가 영점이면 \(\sigma-it\)도 영점입니다.</p>
-
-        <h3>2.2 함수방정식 대칭</h3>
-        <p>리만 제타 함수는 다음 함수방정식을 만족합니다.</p>
-        $$
-        \zeta(s)=
-        2^s\pi^{s-1}
-        \sin\left(\frac{\pi s}{2}\right)
-        \Gamma(1-s)\zeta(1-s)
-        $$
-        <p>비자명한 영점에서는 이 구조로부터</p>
-        $$
-        \zeta(\rho)=0 \quad\Longrightarrow\quad \zeta(1-\rho)=0
-        $$
-        <p>가 따라옵니다.</p>
-      </section>
-
-      <section id="four-points">
-        <h2>3. 하나의 영점에서 나오는 네 대칭점</h2>
-        <p>비자명한 영점</p>
-        $$
-        \rho=\sigma+it
-        $$
-        <p>에서 시작하면 다음 네 점을 얻게 됩니다.</p>
+        <p>따라서 \(\rho\)가 영점이면 다음 네 후보가 모두 영점입니다.</p>
         $$
         \boxed{
-        \rho,\quad
-        \overline{\rho},\quad
-        1-\rho,\quad
-        1-\overline{\rho}
+        \rho,\quad \overline{\rho},\quad 1-\rho,\quad 1-\overline{\rho}
         }
         $$
-        <p>좌표로 쓰면</p>
+        <p>좌표로 풀면</p>
         $$
         \boxed{
         \sigma+it,\quad
@@ -127,129 +91,88 @@
         (1-\sigma)+it
         }
         $$
-
-        <div class="orbit" aria-label="4점 대칭 궤도 그림">
-          <div class="point">\(\sigma+it\)</div>
-          <div class="axis">Re(s) = 1/2</div>
-          <div class="point">\((1-\sigma)+it\)</div>
-          <div class="point">\(\sigma-it\)</div>
-          <div class="point">\((1-\sigma)-it\)</div>
-        </div>
-
-        <p>예를 들어 \(0.3+20i\)가 영점이라면 대칭성에 의해</p>
-        $$
-        0.3+20i,\quad 0.3-20i,\quad 0.7+20i,\quad 0.7-20i
-        $$
-        <p>가 함께 영점이 됩니다.</p>
       </section>
 
-      <section id="group">
-        <h2>4. 대칭군과 궤도</h2>
-        <p>다음 두 변환을 정의합니다.</p>
+      <section id="inside">
+        <h2>3. 네 후보는 모두 임계띠 안에 남는다</h2>
+        <p>원래 조건이</p>
         $$
-        C(s)=\overline{s},
-        \qquad
-        H(s)=1-\overline{s}
+        0<\sigma<1
         $$
-        <p>그러면</p>
+        <p>이면, 양변을 \(1\)에서 빼서</p>
         $$
-        C^2=I,\qquad H^2=I,\qquad CH=HC
+        0<1-\sigma<1
         $$
-        <p>이고, 네 변환</p>
-        $$
-        G=\{I,C,H,CH\}
-        $$
-        <p>은 클라인 4원군과 같은 구조를 가집니다.</p>
-        $$
-        \boxed{G\cong \mathbb{Z}_2\times\mathbb{Z}_2}
-        $$
-
-        <p>궤도-안정자 정리에 의해 한 점의 궤도 크기는 \(|G|=4\)의 약수여야 하므로</p>
-        $$
-        \boxed{1,\;2,\;4}
-        $$
-        <p>중 하나입니다. 따라서 <strong>3점 궤도는 나올 수 없습니다.</strong></p>
-      </section>
-
-      <section id="critical-line">
-        <h2>5. 왜 \(\operatorname{Re}(s)=1/2\)에서 2점으로 줄어드는가?</h2>
-        <p>좌우 반사</p>
-        $$
-        H(s)=1-\overline{s}
-        $$
-        <p>의 고정점을 찾겠습니다. \(H(s)=s\)라고 하면</p>
-        $$
-        1-\overline{s}=s
-        $$
-        <p>입니다. \(s=\sigma+it\)를 대입하면</p>
-        $$
-        1-\sigma+it=\sigma+it
-        $$
-        <p>이므로</p>
-        $$
-        \boxed{\sigma=\frac12}
-        $$
-        <p>가 됩니다.</p>
-
-        <p>실제로</p>
-        $$
-        \rho=\frac12+it
-        $$
-        <p>라면</p>
-        $$
-        1-\rho=\frac12-it=\overline{\rho}
-        $$
-        <p>이고</p>
-        $$
-        1-\overline{\rho}=\rho
-        $$
-        <p>이므로 원래 네 후보가 두 점으로 겹칩니다.</p>
+        <p>도 얻습니다.</p>
 
         <div class="box ok">
-          <strong>결론</strong>
-          비자명한 영점에서
+          <strong>임계띠 보존</strong>
+          네 후보의 실수부는 \(\sigma\) 또는 \(1-\sigma\)입니다.
+          둘 다 \(0\)과 \(1\) 사이이므로 네 후보 모두 임계띠 안에 있습니다.
+        </div>
+      </section>
+
+      <section id="distinct">
+        <h2>4. 언제 실제로 서로 다른 네 점인가?</h2>
+        <p>위아래 점이 같아지려면</p>
+        $$
+        \sigma+it=\sigma-it
+        \quad\Longleftrightarrow\quad t=0
+        $$
+        <p>이어야 합니다. 하지만 비자명한 영점에서는 \(t\neq0\)입니다.</p>
+
+        <p>좌우 점이 같아지려면</p>
+        $$
+        \sigma+it=(1-\sigma)+it
+        \quad\Longleftrightarrow\quad
+        \sigma=\frac12
+        $$
+        <p>이어야 합니다.</p>
+
+        <div class="box key math-summary">
           $$
           \boxed{
-          |\operatorname{Orb}(\rho)|=2
-          \iff
-          \operatorname{Re}(\rho)=\frac12
+          0<\sigma<1,\quad t\neq0,\quad \sigma\neq\frac12
+          \Rightarrow
+          \text{서로 다른 네 복소수}
           }
           $$
         </div>
+
+        <p>예를 들어 \(\sigma=0.3\), \(t=20\)이면</p>
+        $$
+        0.3+20i,\quad 0.3-20i,\quad 0.7+20i,\quad 0.7-20i
+        $$
+        <p>이고, 네 점은 모두 임계띠 안에 있으며 서로 다릅니다.</p>
       </section>
 
-      <section>
-        <h2>6. 1점 궤도는 왜 없는가?</h2>
-        <p>1점 궤도가 되려면 모든 대칭에서 자기 자신이어야 합니다.</p>
-        <p>특히</p>
+      <section id="shift">
+        <h2>5. \(z=s-1/2\)로 중심을 옮기면</h2>
+        <p>새 변수</p>
         $$
-        \rho=\overline{\rho}
+        z=s-\frac12
         $$
-        <p>이므로 \(t=0\)이어야 하고, 동시에</p>
+        <p>를 쓰면 임계띠의 조건도 함께 이동합니다.</p>
         $$
-        \rho=1-\rho
+        0<\operatorname{Re}(s)<1
+        \quad\Longleftrightarrow\quad
+        -\frac12<\operatorname{Re}(z)<\frac12
         $$
-        <p>이므로 \(\rho=1/2\)이어야 합니다.</p>
-        <p>하지만</p>
-        $$
-        \zeta\left(\frac12\right)\neq0
-        $$
-        <p>이므로 비자명한 영점에서 1점 궤도는 존재하지 않습니다.</p>
+        <p>영역을 벗어난 것이 아니라, 임계띠의 중심을 \(0\)으로 옮긴 것입니다.</p>
 
-        <p>따라서 비자명한 영점에서 가능한 경우는 실제로</p>
+        <p>\(a=\sigma-1/2\)라고 하면 네 후보는</p>
         $$
-        \boxed{2\text{점 궤도 또는 }4\text{점 궤도}}
+        \boxed{a+it,\quad a-it,\quad -a+it,\quad -a-it}
         $$
-        <p>뿐입니다.</p>
+        <p>가 됩니다. \(a\neq0\)이고 \(t\neq0\)이면 네 점이 서로 다르고, \(a=0\)이면 좌우 점들이 겹칩니다.</p>
       </section>
 
-      <section id="rh">
-        <h2>7. 리만가설을 궤도 관점에서 다시 쓰기</h2>
-
+      <section id="orbits">
+        <h2>6. 2점 궤도와 4점 궤도</h2>
         <table>
           <thead>
             <tr>
-              <th>영점의 위치</th>
+              <th>비자명한 영점의 위치</th>
               <th>서로 다른 대칭점 수</th>
             </tr>
           </thead>
@@ -259,69 +182,67 @@
               <td>2개</td>
             </tr>
             <tr>
-              <td>\(\operatorname{Re}(\rho)\neq1/2\)</td>
+              <td>\(0<\operatorname{Re}(\rho)<1\), \(\operatorname{Re}(\rho)\neq1/2\)</td>
               <td>4개</td>
             </tr>
           </tbody>
         </table>
 
+        <p>임계선 위에서는</p>
+        $$
+        1-\rho=\overline{\rho},
+        \qquad
+        1-\overline{\rho}=\rho
+        $$
+        <p>가 되어 네 후보가 두 개의 서로 다른 점으로 겹칩니다.</p>
+
         <div class="box key math-summary">
           $$
           \boxed{
-          \text{RH}
+          |\operatorname{Orb}(\rho)|=2
           \iff
-          \text{모든 비자명한 영점의 궤도 크기가 }2
+          \operatorname{Re}(\rho)=\frac12
           }
           $$
           $$
           \boxed{
-          \text{RH}
+          |\operatorname{Orb}(\rho)|=4
           \iff
-          \text{크기 }4\text{인 비자명 영점 궤도가 존재하지 않음}
+          \operatorname{Re}(\rho)\neq\frac12
           }
           $$
+          <p>두 번째 식은 \(\rho\)가 이미 비자명한 영점이라는 전제 아래의 분류입니다.</p>
         </div>
       </section>
 
       <section id="limit">
-        <h2>8. 이것이 리만가설의 증명은 아니다</h2>
+        <h2>7. 이것이 리만가설의 증명은 아닌 이유</h2>
         <div class="box warn">
           <strong>중요</strong>
-          여기까지의 논리는 비자명한 영점의 대칭 구조를 정리한 것입니다.
-          이것만으로 critical line 밖의 영점을 배제할 수는 없습니다.
+          여기서 증명한 것은 “영점이라면 대칭 궤도가 어떤 크기를 가지는가”입니다.
+          “임계선 밖에는 영점이 없다”는 사실은 아직 증명하지 않았습니다.
         </div>
 
-        <p>critical line 밖에서 어떤 영점 \(\sigma+it\)가 존재한다면</p>
+        <p>즉 현재 얻은 것은</p>
         $$
-        \sigma+it,\quad
-        \sigma-it,\quad
-        (1-\sigma)+it,\quad
-        (1-\sigma)-it
+        \zeta(\rho)=0,\quad \operatorname{Re}(\rho)\neq\frac12
+        \Rightarrow
+        \text{서로 다른 4점 영점 궤도}
         $$
-        <p>라는 4점 궤도가 만들어집니다.</p>
-        <p>이 구조는 제타 함수의 알려진 대칭과 모순되지 않습니다.</p>
-
-        <p>따라서 실제로 남는 핵심 문제는 다음과 같습니다.</p>
-        <div class="box key math-summary">
-          $$
-          \boxed{
-          \text{왜 리만 제타 함수에는 크기 }4\text{인 비자명 영점 궤도가 존재하지 않는가?}
-          }
-          $$
-        </div>
-
-        <p>
-          이 명제를 증명하려면 대칭성만으로는 부족하며,
-          제타 함수가 가진 더 강한 구조를 찾아야 합니다.
-        </p>
+        <p>입니다. 리만가설을 증명하려면 여기에 더해</p>
+        $$
+        \boxed{
+        \text{그러한 4점 영점 궤도는 실제 제타 함수에 존재하지 않는다}
+        }
+        $$
+        <p>를 보여야 합니다.</p>
       </section>
 
       <section>
-        <h2>9. 한 문장 요약</h2>
+        <h2>8. 한 문장 요약</h2>
         <p class="lead">
-          제타 함수의 대칭은 왜 \(1/2\)가 특별한지는 설명하지만,
-          왜 모든 비자명한 영점이 그 선 위에만 존재해야 하는지는 설명하지 못합니다.
-          바로 그 마지막 간격이 리만가설입니다.
+          임계띠 안에서 임계선 밖의 비자명한 영점은 서로 다른 네 점을 만들고,
+          임계선 위의 비자명한 영점은 대칭점이 겹쳐 서로 다른 두 점만 만듭니다.
         </p>
       </section>
     </article>
