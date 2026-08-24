@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="리만 제타 함수의 비자명 영점이 임계띠 안에서 서로 다른 2점 또는 4점 대칭 궤도를 이루는 조건을 설명합니다." />
+  <meta name="description" content="리만 제타 함수의 비자명 영점 대칭 구조와, 가상의 반례 영점을 가정했을 때 나타나는 4점 영점 구조를 설명합니다." />
   <title>리만 제타 함수의 비자명 영점과 대칭 궤도</title>
   <link rel="stylesheet" href="../assets/style.css" />
   <script>
@@ -29,8 +29,8 @@
       <div class="eyebrow">RIEMANN ZETA FUNCTION · DISTINCT ORBITS</div>
       <h1>비자명한 영점은 왜<br />서로 다른 2점 또는 4점으로 나타나는가?</h1>
       <p>
-        임계띠 안의 영점에서 출발해 대칭점들이 모두 영역 안에 남는지,
-        그리고 언제 실제로 서로 다른 네 복소수가 되는지를 분명하게 정리합니다.
+        임계띠 안의 실제 제타 영점에서 출발해 대칭점들이 모두 영역 안에 남는지,
+        그리고 리만가설의 가상 반례를 놓았을 때 어떤 구조가 강제되는지를 정리합니다.
       </p>
     </div>
   </header>
@@ -43,6 +43,7 @@
       <a href="#distinct">서로 다른 네 점</a>
       <a href="#shift">좌표 이동</a>
       <a href="#orbits">2점과 4점</a>
+      <a href="#hypothetical">가상의 반례 영점</a>
       <a href="#limit">증명의 한계</a>
     </div>
   </nav>
@@ -51,7 +52,7 @@
     <article>
       <p class="lead">
         여기서 “4점 궤도”라는 말은 네 식을 형식적으로 나열한다는 뜻이 아닙니다.
-        <strong>임계띠 안에 있는 서로 다른 네 복소수</strong>가 모두 영점이라는 뜻입니다.
+        <strong>하나의 실제 제타 영점을 가정했을 때 대칭에 의해 함께 영점이 되는 서로 다른 네 복소수</strong>를 뜻합니다.
       </p>
 
       <section id="setting">
@@ -76,7 +77,7 @@
         \qquad
         \zeta(\rho)=0\Rightarrow\zeta(1-\rho)=0
         $$
-        <p>따라서 \(\rho\)가 영점이면 다음 네 후보가 모두 영점입니다.</p>
+        <p>따라서 \(\rho\)가 실제 영점이면 다음 네 점이 모두 영점입니다.</p>
         $$
         \boxed{
         \rho,\quad \overline{\rho},\quad 1-\rho,\quad 1-\overline{\rho}
@@ -94,21 +95,21 @@
       </section>
 
       <section id="inside">
-        <h2>3. 네 후보는 모두 임계띠 안에 남는다</h2>
+        <h2>3. 네 점은 모두 임계띠 안에 남는다</h2>
         <p>원래 조건이</p>
         $$
         0<\sigma<1
         $$
-        <p>이면, 양변을 \(1\)에서 빼서</p>
+        <p>이면</p>
         $$
         0<1-\sigma<1
         $$
-        <p>도 얻습니다.</p>
+        <p>도 성립합니다.</p>
 
         <div class="box ok">
           <strong>임계띠 보존</strong>
-          네 후보의 실수부는 \(\sigma\) 또는 \(1-\sigma\)입니다.
-          둘 다 \(0\)과 \(1\) 사이이므로 네 후보 모두 임계띠 안에 있습니다.
+          네 점의 실수부는 \(\sigma\) 또는 \(1-\sigma\)입니다.
+          둘 다 \(0\)과 \(1\) 사이이므로 네 점 모두 임계띠 안에 있습니다.
         </div>
       </section>
 
@@ -134,16 +135,11 @@
           \boxed{
           0<\sigma<1,\quad t\neq0,\quad \sigma\neq\frac12
           \Rightarrow
-          \text{서로 다른 네 복소수}
+          \text{서로 다른 네 복소수 영점}
           }
           $$
+          <p>이 결론은 \(\rho=\sigma+it\)가 실제 제타 영점이라는 전제 아래에서 성립합니다.</p>
         </div>
-
-        <p>예를 들어 \(\sigma=0.3\), \(t=20\)이면</p>
-        $$
-        0.3+20i,\quad 0.3-20i,\quad 0.7+20i,\quad 0.7-20i
-        $$
-        <p>이고, 네 점은 모두 임계띠 안에 있으며 서로 다릅니다.</p>
       </section>
 
       <section id="shift">
@@ -160,11 +156,15 @@
         $$
         <p>영역을 벗어난 것이 아니라, 임계띠의 중심을 \(0\)으로 옮긴 것입니다.</p>
 
-        <p>\(a=\sigma-1/2\)라고 하면 네 후보는</p>
+        <p>\(a=\sigma-1/2\)라고 하면 네 점은</p>
         $$
         \boxed{a+it,\quad a-it,\quad -a+it,\quad -a-it}
         $$
-        <p>가 됩니다. \(a\neq0\)이고 \(t\neq0\)이면 네 점이 서로 다르고, \(a=0\)이면 좌우 점들이 겹칩니다.</p>
+        <p>가 됩니다. 임계띠 조건은 반드시</p>
+        $$
+        \boxed{-\frac12<a<\frac12}
+        $$
+        <p>로 함께 유지해야 합니다. \(a\neq0\)이고 \(t\neq0\)이면 네 점이 서로 다르고, \(a=0\)이면 좌우 점들이 겹칩니다.</p>
       </section>
 
       <section id="orbits">
@@ -194,7 +194,7 @@
         \qquad
         1-\overline{\rho}=\rho
         $$
-        <p>가 되어 네 후보가 두 개의 서로 다른 점으로 겹칩니다.</p>
+        <p>가 되어 네 표현이 두 개의 서로 다른 점으로 겹칩니다.</p>
 
         <div class="box key math-summary">
           $$
@@ -211,38 +211,150 @@
           \operatorname{Re}(\rho)\neq\frac12
           }
           $$
-          <p>두 번째 식은 \(\rho\)가 이미 비자명한 영점이라는 전제 아래의 분류입니다.</p>
+          <p>두 식 모두 \(\rho\)가 비자명한 제타 영점이라는 전제 아래의 분류입니다.</p>
         </div>
+      </section>
+
+      <section id="hypothetical">
+        <h2>7. 가상의 반례 영점을 잡을 경우</h2>
+        <p>
+          이제 임의의 좌표를 영점이라고 두는 것이 아니라, <strong>리만가설이 거짓이라고 가정했을 때 존재해야 하는 실제 제타 영점</strong> 하나를 가정합니다.
+          좌우 대칭 때문에 오른쪽 반쪽만 보아도 충분하므로
+        </p>
+        $$
+        \boxed{
+        \rho=\frac12+\alpha+i\beta,
+        \qquad 0<\alpha<\frac12,
+        \qquad \beta\neq0,
+        \qquad \xi(\rho)=0
+        }
+        $$
+        <p>라고 놓습니다. 여기서 \(\alpha\)와 \(\beta\)는 임의로 정한 숫자가 아니라, 존재한다고 가정한 실제 반례 영점의 좌표입니다.</p>
+
+        <p>완성 제타 함수</p>
+        $$
+        \xi(s)=\frac12s(s-1)\pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s)
+        $$
+        <p>는 임계띠 안에서 \(\zeta(s)\)의 비자명한 영점과 같은 영점을 가지며</p>
+        $$
+        \xi(s)=\xi(1-s),
+        \qquad
+        \xi(\overline{s})=\overline{\xi(s)}
+        $$
+        <p>를 만족합니다. 따라서 첫 점이 영점이라는 가정 하나로 다음 네 식이 구조적으로 결정됩니다.</p>
+        $$
+        \boxed{
+        \begin{aligned}
+        \xi\left(\frac12+\alpha+i\beta\right)&=0,\\
+        \xi\left(\frac12+\alpha-i\beta\right)&=0,\\
+        \xi\left(\frac12-\alpha+i\beta\right)&=0,\\
+        \xi\left(\frac12-\alpha-i\beta\right)&=0.
+        \end{aligned}
+        }
+        $$
+        <p>그리고 \(0<\alpha<1/2\)이므로 네 점은 모두 원래 임계띠 안에 있으며 서로 다릅니다.</p>
+
+        <h3>같은 높이에서 \(a\) 방향으로 관찰하기</h3>
+        <p>고정된 높이 \(\beta\)에서</p>
+        $$
+        M_\beta(a)
+        =
+        \left|\xi\left(\frac12+a+i\beta\right)\right|^2,
+        \qquad -\frac12<a<\frac12
+        $$
+        <p>를 정의합니다. 대칭으로</p>
+        $$
+        \boxed{M_\beta(-a)=M_\beta(a)}
+        $$
+        <p>이고, 가상의 반례 영점 때문에</p>
+        $$
+        \boxed{M_\beta(\alpha)=M_\beta(-\alpha)=0}
+        $$
+        <p>가 반드시 성립합니다.</p>
+
+        <p>만약 \(\rho\)의 중복도가 \(m\)이라면 영점 근처에서</p>
+        $$
+        \xi\left(\frac12+a+i\beta\right)
+        =(a-\alpha)^m g(a),
+        \qquad g(\alpha)\neq0
+        $$
+        <p>로 쓸 수 있으므로</p>
+        $$
+        M_\beta(a)
+        =|a-\alpha|^{2m}|g(a)|^2.
+        $$
+        <p>따라서 반례 영점이 실제로 있다면 \(a=\alpha\)는 \(M_\beta(a)\)가 0까지 내려가는 지점이 됩니다. 영점의 바로 왼쪽에서는 감소하는 구간이, 바로 오른쪽에서는 증가하는 구간이 생깁니다.</p>
+
+        <div class="box key math-summary">
+          <strong>가상 반례가 강제하는 구조</strong>
+          $$
+          \boxed{
+          \alpha>0\text{인 반례 영점}
+          \Rightarrow
+          M_\beta(\alpha)=0
+          \Rightarrow
+          0<a<\alpha\text{의 어떤 구간에서 }M_\beta'(a)<0
+          }
+          $$
+        </div>
+
+        <p>반대로 제타 함수의 다른 독립적인 성질만으로, 영점이 없다는 가정을 사용하지 않고</p>
+        $$
+        \boxed{
+        M_b'(a)>0
+        \qquad
+        \left(0<a<\frac12,\ \text{모든 실수 }b\right)
+        }
+        $$
+        <p>를 증명할 수 있다면 위의 감소 구조와 정면으로 충돌합니다. 그러면 \(\alpha>0\)인 반례 영점은 존재할 수 없고, 대칭에 의해 \(\alpha<0\)도 배제되어 \(\operatorname{Re}(\rho)=1/2\)만 남습니다.</p>
       </section>
 
       <section id="limit">
-        <h2>7. 이것이 리만가설의 증명은 아닌 이유</h2>
+        <h2>8. 아직 수학적 모순을 찾지 못한 이유</h2>
         <div class="box warn">
           <strong>중요</strong>
-          여기서 증명한 것은 “영점이라면 대칭 궤도가 어떤 크기를 가지는가”입니다.
-          “임계선 밖에는 영점이 없다”는 사실은 아직 증명하지 않았습니다.
+          가상의 반례 영점을 잡으면 4개의 영점 위치와 \(M_\beta(a)\)의 국소 구조는 강하게 결정됩니다.
+          그러나 대칭, 임계띠, 영점 조건만으로 \(M_b'(a)>0\)의 전역적인 부호는 나오지 않습니다.
         </div>
 
-        <p>즉 현재 얻은 것은</p>
-        $$
-        \zeta(\rho)=0,\quad \operatorname{Re}(\rho)\neq\frac12
-        \Rightarrow
-        \text{서로 다른 4점 영점 궤도}
-        $$
-        <p>입니다. 리만가설을 증명하려면 여기에 더해</p>
+        <p>현재까지 확실히 얻은 것은</p>
         $$
         \boxed{
-        \text{그러한 4점 영점 궤도는 실제 제타 함수에 존재하지 않는다}
+        \text{반례 영점이 존재한다면 특정 높이에서 }M_\beta(a)\text{가 }0\text{까지 내려가야 한다}
         }
         $$
-        <p>를 보여야 합니다.</p>
+        <p>는 구조입니다.</p>
+
+        <p>진짜 모순을 만들려면 제타 함수의 독립적인 다른 표현에서</p>
+        $$
+        \boxed{
+        M_b'(a)\ge0
+        \quad\text{또는 그와 동등한 금지 조건}
+        }
+        $$
+        <p>을 증명해야 합니다. 그 단계가 아직 확보되지 않았습니다.</p>
+
+        <p>따라서 이 글의 현재 결론은 리만가설의 증명이 아니라 다음과 같은 <strong>반례의 필수 구조</strong>를 분리한 것입니다.</p>
+        $$
+        \boxed{
+        \begin{array}{c}
+        \text{임계선 밖의 실제 영점 가정}\\
+        \Downarrow\\
+        \text{임계띠 안의 서로 다른 4개 제타 영점}\\
+        \Downarrow\\
+        M_\beta(\pm\alpha)=0\\
+        \Downarrow\\
+        \text{오른쪽 반쪽에서도 감소 구간이 필요}
+        \end{array}
+        }
+        $$
       </section>
 
       <section>
-        <h2>8. 한 문장 요약</h2>
+        <h2>9. 한 문장 요약</h2>
         <p class="lead">
-          임계띠 안에서 임계선 밖의 비자명한 영점은 서로 다른 네 점을 만들고,
-          임계선 위의 비자명한 영점은 대칭점이 겹쳐 서로 다른 두 점만 만듭니다.
+          리만가설의 가상 반례 영점 하나를 임계띠 안에 놓으면 대칭에 의해 서로 다른 네 제타 영점과 특정한 \(a\)-방향 구조가 강제되지만,
+          그 구조 자체에서는 아직 모순이 나오지 않으며 이를 금지하는 제타 함수 고유의 추가 성질이 필요합니다.
         </p>
       </section>
     </article>
