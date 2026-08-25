@@ -29,8 +29,8 @@
       <div class="eyebrow">RIEMANN ZETA FUNCTION · DISTINCT ORBITS</div>
       <h1>비자명한 영점은 왜<br />서로 다른 2점 또는 4점으로 나타나는가?</h1>
       <p>
-        리만 제타 함수의 급수 정의에서 출발해 감마 적분과 세타 대칭을 거쳐 함수방정식이 어떻게 나타나는지 살펴보고,
-        리만가설의 가상 반례를 놓았을 때 어떤 영점 구조가 강제되는지를 정리합니다.
+        처음에는 \(\operatorname{Re}(s)\gt1\)에서 수렴하는 급수로 출발하고,
+        감마 적분과 세타 대칭을 거치면서 임계띠와 \(\operatorname{Re}(s)=1/2\)이라는 대칭의 중심이 어떻게 드러나는지 살펴봅니다.
       </p>
     </div>
   </header>
@@ -53,8 +53,8 @@
   <main>
     <article>
       <p class="lead">
-        여기서 “4점 궤도”라는 말은 네 식을 형식적으로 나열한다는 뜻이 아닙니다.
-        <strong>하나의 실제 제타 영점을 가정했을 때 대칭에 의해 함께 영점이 되는 서로 다른 네 복소수</strong>를 뜻합니다.
+        이 글의 출발점은 간단합니다. 원래 Dirichlet 급수에서는 \(\operatorname{Re}(s)\gt1\)이라는 직접 수렴 범위를 알 수 있습니다.
+        그러나 함수방정식을 얻고 나면, 그보다 왼쪽에 있는 임계띠에서 \(\operatorname{Re}(s)=1/2\)이 특별한 <strong>대칭의 중심</strong>이라는 사실이 새롭게 보입니다.
       </p>
 
       <section id="setting">
@@ -79,18 +79,22 @@
         <p>처럼 쓸 수 있습니다. 여기서 \(\sigma\)는 실수 방향의 위치이고, \(t\)는 허수 방향의 위치입니다.</p>
 
         <div class="box ok">
-          <strong>급수의 영역과 제타 함수의 영역은 다릅니다.</strong>
-          위의 무한급수 자체는 \(\operatorname{Re}(s)\gt1\)에서 직접 수렴합니다.
-          이후 같은 함수를 <strong>해석적 연속</strong>으로 이어 붙이면 \(s=1\)을 제외한 복소평면 전체의 리만 제타 함수가 됩니다.
-          \(s=1\)에서는 단순극이 있습니다.
+          <strong>처음에 확실히 알고 있는 것: \(\operatorname{Re}(s)\gt1\)에서 급수가 수렴한다.</strong>
+          위의 Dirichlet 급수는 \(\operatorname{Re}(s)\gt1\)에서 직접 수렴합니다.
+          이것은 <strong>급수의 수렴 범위</strong>에 대한 사실이지, 제타 함수 전체가 그 영역에만 존재한다는 뜻은 아닙니다.
         </div>
 
         <div class="box warn">
-          <strong>처음 급수만 보고 알 수 있는 범위</strong>
-          처음의 Dirichlet 급수만 놓고 보면 \(\operatorname{Re}(s)\gt1\)에서 수렴한다는 사실은 직접 확인할 수 있지만,
+          <strong>처음 급수만으로는 \(\operatorname{Re}(s)\lt1\) 쪽이 보이지 않는다.</strong>
           \(\operatorname{Re}(s)\le1\)에서는 이 급수를 그대로 더해 제타 함수의 값을 구할 수 없습니다.
-          따라서 이 단계만으로는 임계띠 \(0\lt\operatorname{Re}(s)\lt1\)의 내부 구조나 \(1/2\)이라는 중심이 아직 보이지 않습니다.
+          따라서 처음 급수만 보고 있을 때는 임계띠 \(0\lt\operatorname{Re}(s)\lt1\)의 내부 구조도,
+          그 안에서 \(1/2\)이 왜 특별한지도 아직 알 수 없습니다.
         </div>
+
+        <p>
+          이후 같은 함수를 <strong>해석적 연속</strong>으로 이어 붙이면 \(s=1\)을 제외한 복소평면 전체의 리만 제타 함수가 됩니다.
+          중요한 점은, 이렇게 확장되었다고 해서 원래 Dirichlet 급수가 \(0\lt\operatorname{Re}(s)\lt1\)에서 수렴하게 된 것은 아니라는 것입니다.
+        </p>
 
         <h3>제타 함수의 영점</h3>
         <p>제타 함수의 영점은</p>
@@ -291,27 +295,65 @@
           <p>따라서 \(\sin\)은 원래 제타 급수에서 직접 튀어나온 것이 아니라, 세타 대칭으로 얻은 함수방정식의 감마 함수들을 정리하는 마지막 단계에서 나타납니다.</p>
         </div>
 
-        <h3 id="critical-center">7단계: 대칭을 보고 나면 왜 \(1/2\)이 특별해지는가?</h3>
+        <h3 id="critical-center">7단계: \(\operatorname{Re}(s)\gt1\)의 수렴 범위에서, 왜 \(1/2\)이라는 중심이 보이기 시작하는가?</h3>
         <p>
-          처음의 급수만 보고 있을 때는 \(\operatorname{Re}(s)\gt1\)이라는 수렴 영역이 먼저 보입니다.
-          반면 그 급수만으로는 \(\operatorname{Re}(s)\le1\) 쪽을 직접 계산할 수 없으므로, 임계띠 안의 중심이 어디인지도 드러나지 않습니다.
+          처음에 직접 알고 있던 것은 하나입니다. Dirichlet 급수
         </p>
+        $$
+        \zeta(s)=\sum_{n=1}^{\infty}n^{-s}
+        $$
         <p>
-          그런데 감마 적분과 세타 함수의 대칭을 거치고 나면 제타 함수에
+          가 \(\operatorname{Re}(s)\gt1\)에서 수렴한다는 사실입니다. 이 단계에서는 \(0\lt\operatorname{Re}(s)\lt1\) 안에서
+          어떤 값이 특별한지 알 수 없습니다.
+        </p>
+
+        <p>
+          그 다음 감마 적분과 세타 함수를 이용해 같은 제타 함수를 해석적으로 연속하고, 함수방정식을 얻습니다.
+          그러면 처음 급수에서는 보이지 않던
         </p>
         $$
         \boxed{s\leftrightarrow1-s}
         $$
-        <p>라는 좌우 관계가 있다는 사실이 나타납니다. 실수부만 보면</p>
+        <p>라는 구조가 나타납니다. 실수부만 보면</p>
         $$
         \boxed{\sigma\leftrightarrow1-\sigma}
         $$
-        <p>입니다. 이 변환의 중심은 두 값이 같아지는 곳이므로</p>
+        <p>이므로 이 좌우 대칭의 중심은</p>
         $$
         \sigma=1-\sigma
         \quad\Longrightarrow\quad
-        \boxed{\sigma=\frac12}.
+        \boxed{\sigma=\frac12}
         $$
+        <p>가 됩니다.</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>단계</th>
+              <th>무엇을 알게 되는가?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>원래 Dirichlet 급수</td>
+              <td>\(\operatorname{Re}(s)\gt1\)에서 급수가 직접 수렴한다.</td>
+            </tr>
+            <tr>
+              <td>해석적 연속</td>
+              <td>\(0\lt\operatorname{Re}(s)\lt1\)에서도 같은 제타 함수를 다룰 수 있다. 단, 원래 급수가 그곳에서 수렴하는 것은 아니다.</td>
+            </tr>
+            <tr>
+              <td>함수방정식</td>
+              <td>\(s\leftrightarrow1-s\)가 나타나고, 그 중심이 \(\operatorname{Re}(s)=1/2\)임을 알게 된다.</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="box warn">
+          <strong>\(1/2\)은 새로운 수렴점이 아닙니다.</strong>
+          \(\operatorname{Re}(s)=1/2\)에서는 원래 Dirichlet 급수가 직접 수렴하지 않습니다.
+          여기서 새롭게 발견한 것은 <strong>수렴 범위</strong>가 아니라 <strong>함수방정식의 대칭 중심</strong>입니다.
+        </div>
 
         <p>복소켤레 대칭까지 함께 보면</p>
         $$
@@ -662,8 +704,9 @@
       <section>
         <h2>10. 한 문장 요약</h2>
         <p class="lead">
-          리만 제타 함수의 급수 정의에서 감마 적분과 세타 대칭을 거쳐 함수방정식이 나타나는 과정을 따라가면, 가상의 반례 영점 하나는 서로 다른 네 영점과 특정한 \(a\)-방향 구조를 강제하지만,
-          그 구조 자체에서는 아직 모순이 나오지 않으며 이를 금지하는 제타 함수 고유의 추가 성질이 필요합니다.
+          처음에는 \(\operatorname{Re}(s)\gt1\)이라는 Dirichlet 급수의 직접 수렴 범위만 보이지만,
+          감마 적분과 세타 대칭을 통해 제타 함수를 확장하고 함수방정식을 얻으면 \(\operatorname{Re}(s)=1/2\)이 대칭의 중심으로 드러납니다.
+          리만가설은 이 중심선이 단순한 대칭축을 넘어 모든 비자명한 영점의 실제 위치이기도 하다고 주장합니다.
         </p>
       </section>
     </article>
