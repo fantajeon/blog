@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="리만 제타 함수의 비자명 영점 대칭 구조와, 가상의 반례 영점을 가정했을 때 나타나는 4점 영점 구조를 설명합니다." />
+  <meta name="description" content="리만 제타 함수의 정의부터 비자명 영점의 대칭 구조와 가상의 반례 영점이 강제하는 구조까지 설명합니다." />
   <title>리만 제타 함수의 비자명 영점과 대칭 궤도</title>
   <link rel="stylesheet" href="../assets/style.css" />
   <script>
@@ -29,15 +29,15 @@
       <div class="eyebrow">RIEMANN ZETA FUNCTION · DISTINCT ORBITS</div>
       <h1>비자명한 영점은 왜<br />서로 다른 2점 또는 4점으로 나타나는가?</h1>
       <p>
-        임계띠 안의 실제 제타 영점에서 출발해 대칭점들이 모두 영역 안에 남는지,
-        그리고 리만가설의 가상 반례를 놓았을 때 어떤 구조가 강제되는지를 정리합니다.
+        리만 제타 함수의 정의에서 출발해 임계띠 안의 영점 대칭을 살펴보고,
+        리만가설의 가상 반례를 놓았을 때 어떤 구조가 강제되는지를 정리합니다.
       </p>
     </div>
   </header>
 
   <nav>
     <div class="inner">
-      <a href="#setting">문제 설정</a>
+      <a href="#setting">제타 함수와 문제 설정</a>
       <a href="#symmetry">두 대칭</a>
       <a href="#inside">임계띠 보존</a>
       <a href="#distinct">서로 다른 네 점</a>
@@ -56,8 +56,62 @@
       </p>
 
       <section id="setting">
-        <h2>1. 문제 설정</h2>
-        <p>비자명한 영점을</p>
+        <h2>1. 제타 함수와 문제 설정</h2>
+
+        <h3>먼저, 제타 함수는 무엇인가?</h3>
+        <p>
+          리만 제타 함수는 복소수 \(s\)를 입력으로 받는 함수입니다.
+          먼저 \(\operatorname{Re}(s)\gt1\)인 영역에서는 다음 무한급수로 정의할 수 있습니다.
+        </p>
+        $$
+        \boxed{
+        \zeta(s)
+        =\sum_{n=1}^{\infty}\frac{1}{n^s}
+        =1+\frac{1}{2^s}+\frac{1}{3^s}+\frac{1}{4^s}+\cdots
+        }
+        $$
+        <p>복소수 \(s\)는</p>
+        $$
+        s=\sigma+it
+        $$
+        <p>처럼 쓸 수 있습니다. 여기서 \(\sigma\)는 실수 방향의 위치이고, \(t\)는 허수 방향의 위치입니다.</p>
+
+        <div class="box ok">
+          <strong>중요한 구분</strong>
+          위의 무한급수 자체는 \(\operatorname{Re}(s)\gt1\)에서 직접 수렴합니다.
+          하지만 제타 함수는 <strong>해석적 연속</strong>이라는 방법으로 \(s=1\)을 제외한 복소평면 전체까지 확장됩니다.
+          \(s=1\)에서는 값이 발산하는 단순극이 있습니다.
+        </div>
+
+        <h3>제타 함수의 영점</h3>
+        <p>제타 함수의 영점은</p>
+        $$
+        \zeta(s)=0
+        $$
+        <p>을 만족하는 복소수 \(s\)입니다. 음의 짝수</p>
+        $$
+        -2,-4,-6,\ldots
+        $$
+        <p>에서 생기는 영점은 <strong>자명한 영점</strong>이라고 부릅니다. 우리가 관심을 두는 나머지 영점은 <strong>비자명한 영점</strong>이며 모두</p>
+        $$
+        \boxed{0\lt\operatorname{Re}(s)\lt1}
+        $$
+        <p>이라는 임계띠 안에 있습니다.</p>
+
+        <div class="box key math-summary">
+          <strong>리만가설(RH)</strong>
+          $$
+          \boxed{
+          \zeta(\rho)=0,
+          \quad 0\lt\operatorname{Re}(\rho)\lt1
+          \quad\Longrightarrow\quad
+          \operatorname{Re}(\rho)=\frac12
+          }
+          $$
+          <p>즉 모든 비자명한 영점이 임계선 \(\operatorname{Re}(s)=1/2\) 위에 있다는 주장입니다.</p>
+        </div>
+
+        <p>이제 비자명한 영점 하나를</p>
         $$
         \rho=\sigma+it,
         \qquad 0\lt\sigma\lt1
@@ -226,34 +280,31 @@
         \rho=\frac12+\alpha+i\beta,
         \qquad 0\lt\alpha\lt\frac12,
         \qquad \beta\neq0,
-        \qquad \xi(\rho)=0
+        \qquad \zeta(\rho)=0
         }
         $$
         <p>라고 놓습니다. 여기서 \(\alpha\)와 \(\beta\)는 임의로 정한 숫자가 아니라, 존재한다고 가정한 실제 반례 영점의 좌표입니다.</p>
 
-        <h3>왜 \(\zeta(s)\)에서 \(\xi(s)\)로 바꾸는가?</h3>
-        <p>먼저 제타 함수에 감마 인자를 붙인</p>
-        $$
-        \Lambda(s)=\pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s)
-        $$
-        <p>를 생각할 수 있습니다. 많은 문헌에서는 이 \(\Lambda(s)\)를 <strong>완성 제타 함수(completed zeta function)</strong>라고 부릅니다.</p>
-
-        <p>여기에 \(s=0\)과 \(s=1\)에서 생기는 특이점을 정리하도록 \(\frac12s(s-1)\)을 곱하면 리만의 \(\xi\) 함수가 됩니다.</p>
+        <h3>여기서 왜 \(\xi(s)\)를 사용하는가?</h3>
+        <p>
+          지금까지는 원래 함수인 \(\zeta(s)\)만 사용했습니다.
+          이제 영점의 대칭을 더 간단하게 다루기 위한 <strong>도구</strong>로 리만의 \(\xi\) 함수를 정의합니다.
+        </p>
         $$
         \boxed{
-        \xi(s)=\frac12s(s-1)\Lambda(s)
-        =\frac12s(s-1)\pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s)
+        \xi(s)
+        =\frac12s(s-1)\pi^{-s/2}
+        \Gamma\left(\frac{s}{2}\right)\zeta(s)
         }
         $$
 
         <div class="box ok">
-          <strong>직관적으로 보면</strong>
-          \(\zeta(s)\)에는 \(s=1\)이라는 ‘구멍/폭주 지점’이 있지만,
-          \(\xi(s)\)는 그 특이점까지 매끈하게 정리한 함수라고 생각할 수 있습니다.
-          정확히는 \(\xi(s)\)는 복소평면 전체에서 해석적인 <strong>entire 함수(전해석 함수)</strong>입니다.
+          <strong>entire 함수란?</strong>
+          복소평면 전체에서 해석적인 함수라는 뜻입니다.
+          \(\zeta(s)\)는 \(s=1\)에서 극이 있지만, 위와 같이 인자들을 조합한 \(\xi(s)\)는 그 특이점이 정리되어 복소평면 전체에서 매끈한 entire 함수가 됩니다.
         </div>
 
-        <p>중요한 것은 함수를 바꾸어도 우리가 찾는 비자명한 영점은 사라지지 않는다는 점입니다. 임계띠 안에서는 \(\xi(s)\)에 추가로 곱한 인자들이 0이 아니므로</p>
+        <p>중요한 것은 \(\xi(s)\)로 옮겨도 비자명한 영점이 바뀌지 않는다는 점입니다. 임계띠 안에서는 추가로 곱한 인자들이 0이 아니므로</p>
         $$
         \boxed{
         \zeta(s)=0
@@ -262,15 +313,22 @@
         \qquad 0\lt\operatorname{Re}(s)\lt1
         }
         $$
-        <p>입니다. 즉 다른 문제로 갈아탄 것이 아니라, <strong>같은 비자명한 영점을 더 매끈하고 대칭적인 함수로 옮겨 담은 것</strong>입니다.</p>
+        <p>입니다. 따라서 위에서 가정한 \(\zeta(\rho)=0\)은 그대로 \(\xi(\rho)=0\)이라고 바꾸어 써도 됩니다.</p>
 
-        <p>또한 \(\xi(s)\)에서는 제타 함수의 함수방정식이</p>
+        <div class="box warn">
+          <strong>완성 제타 함수 \(\Lambda(s)\)는 이 글에서는 생략합니다.</strong>
+          일부 문헌에서는
+          \(\Lambda(s)=\pi^{-s/2}\Gamma(s/2)\zeta(s)\)를 완성 제타 함수라고 부릅니다.
+          하지만 여기서는 중간 기호를 하나 더 늘리지 않고, 원래의 \(\zeta(s)\)와 대칭을 다루기 좋은 \(\xi(s)\)만 사용하겠습니다.
+        </div>
+
+        <p>\(\xi(s)\)의 장점은 함수방정식의 대칭이</p>
         $$
         \xi(s)=\xi(1-s),
         \qquad
         \xi(\overline{s})=\overline{\xi(s)}
         $$
-        <p>처럼 깔끔한 대칭으로 나타납니다. 따라서 첫 점이 영점이라는 가정 하나로 다음 네 식이 구조적으로 결정됩니다.</p>
+        <p>처럼 매우 간단하게 보인다는 것입니다. 따라서 첫 점이 영점이라는 가정 하나로 다음 네 식이 구조적으로 결정됩니다.</p>
         $$
         \boxed{
         \begin{aligned}
@@ -382,7 +440,7 @@
       <section>
         <h2>9. 한 문장 요약</h2>
         <p class="lead">
-          리만가설의 가상 반례 영점 하나를 임계띠 안에 놓으면 대칭에 의해 서로 다른 네 제타 영점과 특정한 \(a\)-방향 구조가 강제되지만,
+          리만 제타 함수의 정의에서 출발해 비자명한 영점의 대칭을 따라가면, 가상의 반례 영점 하나는 서로 다른 네 영점과 특정한 \(a\)-방향 구조를 강제하지만,
           그 구조 자체에서는 아직 모순이 나오지 않으며 이를 금지하는 제타 함수 고유의 추가 성질이 필요합니다.
         </p>
       </section>
