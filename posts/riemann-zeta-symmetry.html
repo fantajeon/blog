@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="오일러의 소수와 연결된 제타 급수에서 출발해, 리만 제타 함수의 해석적 연속, 영점과 소수 분포의 관계, Re(s)=1/2 대칭과 리만가설을 표준 결과와 탐구적 해석을 구분해 설명합니다." />
+  <meta name="description" content="오일러의 소수와 연결된 제타 급수에서 출발해, 리만 제타 함수의 해석적 연속, 영점과 소수 분포의 관계, Re(s)=1/2 좌우 대칭과 Xi 함수의 세타 커널 표현을 표준 결과와 탐구적 해석을 구분해 설명합니다." />
   <title>리만 제타 함수의 영점과 1/2 대칭</title>
   <link rel="stylesheet" href="../assets/style.css" />
   <script>
@@ -44,13 +44,12 @@
       <a href="#gamma-bridge">급수에서 적분으로</a>
       <a href="#zeros">비자명한 영점</a>
       <a href="#critical-center">왜 1/2인가</a>
-      <a href="#symmetry">두 대칭</a>
-      <a href="#inside">임계띠 보존</a>
-      <a href="#distinct">서로 다른 네 점</a>
-      <a href="#shift">좌표 이동</a>
-      <a href="#orbits">2점과 4점</a>
-      <a href="#hypothetical">탐구 노트</a>
-      <a href="#limit">탐구의 한계</a>
+      <a href="#pair-symmetry">좌우 대칭쌍</a>
+      <a href="#shift">중심 좌표</a>
+      <a href="#xi">Xi 함수</a>
+      <a href="#theta-fourier">세타와 A/B 분해</a>
+      <a href="#wronskian">Wronskian</a>
+      <a href="#status">현재 탐구의 위치</a>
     </div>
   </nav>
 
@@ -131,9 +130,7 @@
         =
         \sum_{p}\sum_{m=1}^{\infty}\frac{1}{m p^{ms}}
         $$
-        <p>
-          이 됩니다. 소수 \(p\)와 그 거듭제곱 정보가 제타 함수 안에 직접 나타나는 것입니다.
-        </p>
+        <p>가 됩니다. 소수 \(p\)와 그 거듭제곱 정보가 제타 함수 안에 직접 나타나는 것입니다.</p>
 
         <div class="box ok">
           <strong>역사적 설명과 현대적 설명을 구분하자.</strong>
@@ -191,7 +188,6 @@
         </div>
 
         <h3 id="prime-waves">소수의 계단과 영점이 만드는 파동</h3>
-
         <div class="box key math-summary">
           <strong>먼저 이 한 줄을 잡고 가면 이해가 쉽습니다.</strong>
           $$
@@ -208,29 +204,12 @@
         </div>
 
         <table>
-          <thead>
-            <tr>
-              <th>단계</th>
-              <th>무엇이 보이는가?</th>
-            </tr>
-          </thead>
+          <thead><tr><th>단계</th><th>무엇이 보이는가?</th></tr></thead>
           <tbody>
-            <tr>
-              <td>평균만 본다</td>
-              <td>\(\operatorname{Li}(x)\)나 \(x\) 같은 매끈한 평균적인 흐름만 보인다.</td>
-            </tr>
-            <tr>
-              <td>영점 몇 개의 보정항을 추가한다</td>
-              <td>큰 규모의 굴곡과 흔들림이 나타난다.</td>
-            </tr>
-            <tr>
-              <td>더 많은 영점을 반영한다</td>
-              <td>더 작은 규모의 요철과 세부 구조가 드러난다.</td>
-            </tr>
-            <tr>
-              <td>영점 전체의 기여를 본다</td>
-              <td>명시적 공식이 기술하는 실제 소수 분포의 계단 구조에 해당하는 정보가 복원된다.</td>
-            </tr>
+            <tr><td>평균만 본다</td><td>\(\operatorname{Li}(x)\)나 \(x\) 같은 매끈한 평균적인 흐름만 보인다.</td></tr>
+            <tr><td>영점 몇 개의 보정항을 추가한다</td><td>큰 규모의 굴곡과 흔들림이 나타난다.</td></tr>
+            <tr><td>더 많은 영점을 반영한다</td><td>더 작은 규모의 요철과 세부 구조가 드러난다.</td></tr>
+            <tr><td>영점 전체의 기여를 본다</td><td>명시적 공식이 기술하는 실제 소수 분포의 계단 구조에 해당하는 정보가 복원된다.</td></tr>
           </tbody>
         </table>
 
@@ -238,12 +217,6 @@
           이 모습은 흐릿한 사진에 더 많은 주파수 성분을 넣어 윤곽과 모서리를 점점 선명하게 만드는 것과 비슷합니다.
           다만 이것은 직관을 위한 비유입니다. 엄밀한 명시적 공식에서는 \(\pi(x)\) 자체보다 \(\psi(x)\), \(J(x)\)처럼
           소수와 소수의 거듭제곱을 함께 담는 함수에서 구조가 가장 깔끔하게 나타납니다.
-        </p>
-
-        <p>
-          소수 개수 함수 \(\pi(x)\)는 소수를 만날 때마다 한 칸씩 올라가는 계단 모양이고,
-          \(\operatorname{Li}(x)\) 같은 함수는 그 계단의 평균적인 흐름을 부드럽게 근사합니다.
-          제타 함수의 영점들은 이 평균과 실제 소수 분포 사이의 미세한 흔들림을 설명하는 보정항으로 작용합니다.
         </p>
 
         <p>영점 한 쌍을</p>
@@ -269,16 +242,7 @@
 
         <div class="box ok">
           <strong>영점은 단순한 “진동”이 아니라 진동을 정하는 숫자입니다.</strong>
-          예를 들어 비자명한 영점 \(\rho=\beta+i\gamma\)가 주어지면,
           허수부 \(\gamma\)가 진동의 주파수 역할을 하고 실수부 \(\beta\)가 그 진동의 성장 규모를 정합니다.
-          즉 영점의 좌표가 하나의 보정 파동을 결정합니다.
-        </div>
-
-        <div class="box ok">
-          <strong>이 비유에서 중요한 점</strong>
-          영점 하나가 다음 소수를 알려 주는 것이 아닙니다.
-          여러 영점이 만드는 보정 파동을 함께 보아야 실제 소수 계단의 미세한 구조에 가까워집니다.
-          따라서 중요한 것은 영점 몇 개가 아니라 <strong>영점 전체의 위치와 배열</strong>입니다.
         </div>
 
         <h3>리만가설의 탄생: \(1/2\)이면 무엇이 달라지는가?</h3>
@@ -290,100 +254,36 @@
 
         <div class="box ok">
           <strong>여기서 \(x\)는 무엇인가?</strong>
+          <p>\(x\)는 <strong>“어디까지 소수를 셀 것인가”를 정하는 기준 숫자</strong>입니다.</p>
+          $$\boxed{x=\text{소수를 어느 범위까지 볼 것인가를 나타내는 기준}}$$
           <p>
-            \(x\)는 <strong>“어디까지 소수를 셀 것인가”를 정하는 기준 숫자</strong>입니다.
-            예를 들어 \(x=100\)이면 100 이하의 소수 분포를 보고,
-            \(x=10^6\)이면 백만 이하의 소수 분포를 보는 것입니다.
-          </p>
-          $$
-          \boxed{x=\text{소수를 어느 범위까지 볼 것인가를 나타내는 기준}}
-          $$
-          <p>
-            따라서 \(x^{0.5}\), \(x^{0.6}\), \(x^{0.7}\) 같은 표현은
-            <strong>소수를 보는 범위 \(x\)가 커질 때 영점의 보정항이 얼마나 빠르게 커지는가</strong>를 비교하는 것입니다.
             예를 들어 \(x=10^6\)이면 \(x^{0.5}=1000\)이지만 \(x^{0.7}\approx15849\)이므로,
             같은 범위를 보더라도 실수부가 더 큰 영점은 훨씬 큰 규모의 보정을 만들 수 있습니다.
           </p>
         </div>
 
-        <h4>대칭 영점 한 쌍에서 가장 크게 성장하는 쪽을 보면</h4>
+        <h4>좌우 대칭 영점 한 쌍에서 가장 크게 성장하는 쪽을 보면</h4>
         <p>
           함수방정식의 대칭 때문에 실수부가 \(\beta\)인 영점이 있으면 반대편에는 실수부가 \(1-\beta\)인 영점이 함께 나타납니다.
-          따라서 두 영점이 만드는 보정의 성장 규모를 아주 단순하게 보면
+          두 영점이 만드는 보정의 성장 규모를 단순하게 보면
         </p>
-        $$
-        x^{\beta},
-        \qquad
-        x^{1-\beta}
-        $$
-        <p>
-          를 비교하게 됩니다. 둘 중 더 빠르게 커지는 쪽의 지수는
-        </p>
-        $$
-        \boxed{\max(\beta,1-\beta)}
-        $$
+        $$x^{\beta},\qquad x^{1-\beta}$$
+        <p>이고 둘 중 더 빠르게 커지는 쪽의 지수는</p>
+        $$\boxed{\max(\beta,1-\beta)}$$
         <p>입니다.</p>
-
-        <table>
-          <thead>
-            <tr>
-              <th>한쪽 영점의 실수부 \(\beta\)</th>
-              <th>대칭 영점의 실수부</th>
-              <th>더 크게 성장하는 보정의 규모</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>\(0.9\)</td>
-              <td>\(0.1\)</td>
-              <td>\(x^{0.9}\)</td>
-            </tr>
-            <tr>
-              <td>\(0.7\)</td>
-              <td>\(0.3\)</td>
-              <td>\(x^{0.7}\)</td>
-            </tr>
-            <tr>
-              <td>\(0.6\)</td>
-              <td>\(0.4\)</td>
-              <td>\(x^{0.6}\)</td>
-            </tr>
-            <tr>
-              <td>\(0.5\)</td>
-              <td>\(0.5\)</td>
-              <td>\(x^{0.5}=\sqrt{x}\)</td>
-            </tr>
-          </tbody>
-        </table>
 
         <div class="box key math-summary">
           <strong>왜 \(1/2\)이 특별한가?</strong>
-          $$
-          \boxed{
-          \max(\beta,1-\beta)\ge\frac12
-          }
-          $$
-          <p>이고, 등호가 되는 경우는 오직</p>
-          $$
-          \boxed{\beta=\frac12}
-          $$
-          <p>
-            뿐입니다. 즉 좌우 대칭인 두 영점의 보정 가운데 <strong>더 크게 성장하는 쪽의 성장 지수</strong>를 비교하면,
-            \(1/2\)에서 그 최대값이 가장 작아집니다. 이 의미에서 임계선은 대칭쌍의 보정 규모가 가장 균형 잡히는 위치입니다.
-          </p>
+          $$\boxed{\max(\beta,1-\beta)\ge\frac12}$$
+          <p>이며 등호가 되는 경우는 오직</p>
+          $$\boxed{\beta=\frac12}$$
+          <p>뿐입니다. 임계선은 좌우 대칭쌍의 성장 지수 중 큰 쪽을 최소화하는 유일한 위치입니다.</p>
         </div>
 
         <div class="box warn">
-          <strong>하지만 이것은 “영점이 반드시 \(1/2\)에 있어야 한다”는 증명은 아닙니다.</strong>
-          영점이 \(0.7+i\gamma\)에 있고 대칭 영점이 \(0.3+i\gamma\)에 있어도 명시적 공식 자체는 성립할 수 있습니다.
-          위 계산은 <strong>왜 \(1/2\)이 소수 분포의 오차 크기 측면에서 특별한 위치인가</strong>를 설명할 뿐,
-          실제 제타 함수의 모든 영점이 그 선을 선택해야 하는 이유를 증명하지는 않습니다. 바로 그 마지막 명제가 리만가설입니다.
-        </div>
-
-        <div class="box warn">
-          <strong>“소수가 극단적으로 무작위해진다” 또는 “최선의 균형을 갖는다”는 말은 비유입니다.</strong>
-          리만가설이 거짓이라고 해서 소수정리가 무너지는 것은 아니며, 오차가 문자 그대로 제어 불가능해지는 것도 아닙니다.
-          수학적으로 정확한 내용은 <strong>영점의 실수부가 소수 분포 오차의 가능한 크기를 지배한다</strong>는 것입니다.
+          <strong>하지만 이것은 증명이 아닙니다.</strong>
+          위 계산은 \(1/2\)이 소수 분포의 오차 크기 측면에서 왜 특별한지를 설명할 뿐,
+          실제 제타 함수의 모든 영점이 그 선을 선택해야 하는 이유를 증명하지 않습니다.
         </div>
 
         <p>리만가설은</p>
@@ -396,46 +296,22 @@
         }
         $$
         <p>라고 주장합니다. 이것이 참이면 고전적으로</p>
-        $$
-        \boxed{
-        \psi(x)=x+O\!\left(\sqrt{x}\,\log^2 x\right)
-        }
-        $$
-        <p>
-          와 같은 강한 오차 제어를 얻습니다. 소수 개수 함수로는
-        </p>
-        $$
-        \boxed{
-        \pi(x)=\operatorname{Li}(x)+O\!\left(\sqrt{x}\,\log x\right)
-        }
-        $$
-        <p>
-          라는 형태로 표현할 수 있습니다. 이것이 “모든 영점이 \(1/2\) 위에 있으면 소수 분포가 더 정교하게 제어된다”는 말을 수학적으로 옮긴 모습입니다.
-        </p>
-
-        <p>
-          리만의 논문과 남아 있는 계산 기록에는 초기 비자명한 영점에 대한 수치 계산이 있으며, 그가 확인한 영점들은 임계선에 놓였습니다.
-          리만은 자신의 변수로 표현한 \(\xi\) 함수의 모든 영점이 실수일 가능성이 매우 높다고 적었고,
-          오늘날의 \(s\) 좌표로 번역하면 모든 비자명한 영점이 \(\operatorname{Re}(s)=1/2\) 위에 있다는 리만가설이 됩니다.
-        </p>
+        $$\boxed{\psi(x)=x+O\!\left(\sqrt{x}\,\log^2 x\right)}$$
+        <p>와 같은 강한 오차 제어를 얻습니다. 소수 개수 함수로는</p>
+        $$\boxed{\pi(x)=\operatorname{Li}(x)+O\!\left(\sqrt{x}\,\log x\right)}$$
+        <p>라는 형태로 표현할 수 있습니다.</p>
 
         <p>
           참고 자료:
-          <a href="https://m.science.ytn.co.kr/program/view.php?mcd=0082&amp;key=201901181608304128" target="_blank" rel="noopener">YTN 사이언스 「리만 가설은 무엇인가?」</a>,
           <a href="https://www.claymath.org/collections/riemanns-1859-manuscript/" target="_blank" rel="noopener">Clay Mathematics Institute, Riemann's 1859 Manuscript</a>,
-          <a href="https://www.claymath.org/library/public_lectures/mazur_riemann_hypothesis.pdf" target="_blank" rel="noopener">Barry Mazur, Primes and the Riemann Hypothesis</a>,
           <a href="https://dlmf.nist.gov/25.2" target="_blank" rel="noopener">NIST DLMF §25.2</a>,
-          <a href="https://dlmf.nist.gov/25.10" target="_blank" rel="noopener">NIST DLMF §25.10</a>,
-          <a href="https://dlmf.nist.gov/27.4" target="_blank" rel="noopener">NIST DLMF §27.4</a>
+          <a href="https://dlmf.nist.gov/25.10" target="_blank" rel="noopener">NIST DLMF §25.10</a>
         </p>
       </section>
 
       <section id="setting">
         <h2>2. 수학적 출발점: \(\operatorname{Re}(s)\gt1\)에서의 제타 급수</h2>
-
-        <p>
-          이제 위의 큰 그림을 수식으로 따라가 보겠습니다. 리만 제타 함수의 출발점은 복소수 \(s\)에 대한 다음 무한급수입니다.
-        </p>
+        <p>리만 제타 함수의 출발점은 복소수 \(s\)에 대한 다음 무한급수입니다.</p>
         $$
         \boxed{
         \zeta(s)
@@ -444,109 +320,35 @@
         \qquad \operatorname{Re}(s)\gt1
         }
         $$
-
-        <p>복소수 \(s\)는</p>
-        $$
-        s=\sigma+it
-        $$
-        <p>처럼 쓸 수 있습니다. 여기서 \(\sigma=\operatorname{Re}(s)\)는 실수 방향의 위치이고, \(t\)는 허수 방향의 위치입니다.</p>
-
+        <p>복소수 \(s\)는 \(s=\sigma+it\)처럼 쓸 수 있습니다.</p>
         <div class="box ok">
           <strong>이 단계에서 알고 있는 것은 수렴 범위입니다.</strong>
           위 Dirichlet 급수는 \(\operatorname{Re}(s)\gt1\)에서 직접 수렴합니다.
-          즉 이 영역에서는 항들을 실제로 더해서 \(\zeta(s)\)의 값을 얻을 수 있습니다.
         </div>
-
         <div class="box warn">
           <strong>수렴과 영점은 다른 질문입니다.</strong>
-          수렴은 “이 무한급수가 하나의 값으로 모이는가?”를 묻는 것이고,
-          영점은 “이미 정의된 함수의 값이 0이 되는가?”를 묻는 것입니다.
-          따라서 \(\operatorname{Re}(s)\gt1\)이라는 수렴 조건만으로는 아직 영점이나 \(1/2\)에 대한 결론이 나오지 않습니다.
+          수렴은 “이 무한급수가 하나의 값으로 모이는가?”를 묻고, 영점은 “이미 정의된 함수의 값이 0이 되는가?”를 묻습니다.
         </div>
-
-        <p>
-          문제는 \(\operatorname{Re}(s)\le1\)에서는 위 급수를 그대로 더할 수 없다는 점입니다.
-          따라서 그 왼쪽 영역을 조사하려면 먼저 <strong>같은 함수를 다른 표현으로 이어 가는 과정</strong>이 필요합니다.
-        </p>
       </section>
 
       <section id="gamma-bridge">
         <h2>3. 급수에서 적분 표현으로 넘어간다</h2>
-        <p>
-          제타 급수에서 함수방정식으로 바로 넘어가는 것은 아닙니다.
-          먼저 각 항 \(1/n^s\)를 감마 함수의 적분 정의를 이용해 같은 값의 적분으로 다시 씁니다.
-        </p>
-
         <h3>1단계: 감마 함수의 적분 정의</h3>
-        $$
-        \boxed{
-        \Gamma(z)=\int_0^{\infty}u^{z-1}e^{-u}\,du
-        }
-        $$
-        <p>여기에 \(z=s/2\)를 넣으면</p>
-        $$
-        \Gamma\left(\frac{s}{2}\right)
-        =\int_0^{\infty}u^{s/2-1}e^{-u}\,du.
-        $$
-
-        <h3>2단계: \(u=\pi n^2t\)로 변수 치환</h3>
-        $$
-        u=\pi n^2t,
-        \qquad du=\pi n^2\,dt.
-        $$
-        <p>이를 감마 적분에 넣고 정리하면</p>
-        $$
-        \Gamma\left(\frac{s}{2}\right)
-        =\pi^{s/2}n^s
-        \int_0^{\infty}
-        t^{s/2-1}e^{-\pi n^2t}\,dt
-        $$
-        <p>가 되고, 따라서</p>
+        $$\boxed{\Gamma(z)=\int_0^{\infty}u^{z-1}e^{-u}\,du}$$
+        <p>여기에 \(z=s/2\)를 넣고 \(u=\pi n^2t\)로 변수치환하면</p>
         $$
         \boxed{
         \frac1{n^s}
         =
         \frac{\pi^{s/2}}{\Gamma(s/2)}
-        \int_0^{\infty}
-        t^{s/2-1}e^{-\pi n^2t}\,dt
+        \int_0^{\infty}t^{s/2-1}e^{-\pi n^2t}\,dt
         }
         $$
         <p>를 얻습니다.</p>
 
-        <div class="box ok">
-          <strong>새 함수를 만든 것이 아닙니다.</strong>
-          원래 제타 급수의 한 항 \(1/n^s\)를 동일한 값을 갖는 적분식으로 바꾼 것입니다.
-          \((n^2)^{s/2}=n^s\)가 되기 때문에 \(n^2\)와 \(s/2\)가 자연스럽게 등장합니다.
-        </div>
-
-        <h3>3단계: 모든 \(n\)을 다시 합한다</h3>
-        <p>제타 급수의 각 항에 위 적분 표현을 넣으면</p>
-        $$
-        \zeta(s)
-        =
-        \frac{\pi^{s/2}}{\Gamma(s/2)}
-        \sum_{n=1}^{\infty}
-        \int_0^{\infty}
-        t^{s/2-1}e^{-\pi n^2t}\,dt.
-        $$
-        <p>\(\operatorname{Re}(s)\gt1\)에서는 합과 적분의 순서를 바꿀 수 있으므로</p>
-        $$
-        \boxed{
-        \zeta(s)
-        =
-        \frac{\pi^{s/2}}{\Gamma(s/2)}
-        \int_0^{\infty}
-        t^{s/2-1}
-        \left(\sum_{n=1}^{\infty}e^{-\pi n^2t}\right)dt
-        }
-        $$
-        <p>라는 제타 함수의 적분 표현을 얻습니다.</p>
-
-        <h3>4단계: 괄호 안의 합을 세타 함수로 묶는다</h3>
+        <h3>2단계: 모든 \(n\)을 합해 세타 함수로 묶는다</h3>
         <p>Jacobi 세타 함수를</p>
-        $$
-        \theta(t)=\sum_{n=-\infty}^{\infty}e^{-\pi n^2t}=1+2\sum_{n=1}^{\infty}e^{-\pi n^2t}
-        $$
+        $$\theta(t)=\sum_{n=-\infty}^{\infty}e^{-\pi n^2t}=1+2\sum_{n=1}^{\infty}e^{-\pi n^2t}$$
         <p>라고 하면</p>
         $$
         \boxed{
@@ -554,309 +356,320 @@
         =\frac12\int_0^{\infty}[\theta(t)-1]t^{s/2-1}\,dt
         }
         $$
-        <p>가 됩니다.</p>
+        <p>가 됩니다. 이것이 세타 함수와 제타 함수를 연결하는 Mellin 변환입니다.</p>
 
         <div class="box warn">
-          <strong>여기까지는 여전히 \(\operatorname{Re}(s)\gt1\)입니다.</strong>
-          급수를 적분으로 바꿨다고 해서 원래 급수가 \(\operatorname{Re}(s)\le1\)에서 갑자기 수렴하는 것은 아닙니다.
-          다만 같은 함수를 <strong>대칭을 찾기 쉬운 형태</strong>로 바꿔 놓았습니다.
+          <strong>여기까지는 여전히 \(\operatorname{Re}(s)\gt1\)에서 출발한 표현입니다.</strong>
+          적분 표현으로 바꿨다고 해서 원래 Dirichlet 급수가 임계띠에서 수렴하게 되는 것은 아닙니다.
         </div>
 
-        <h3>5단계: 세타 대칭으로 원래 영역 밖까지 이어 간다</h3>
-        <p>세타 함수에는 Poisson 합 공식에서 나오는</p>
-        $$
-        \boxed{\theta(t)=t^{-1/2}\theta(1/t)}
-        $$
-        <p>라는 대칭이 있습니다.</p>
-
-        <p>
-          위 적분을 \(0\)에서 \(1\), 그리고 \(1\)에서 \(\infty\)로 나누고 첫 구간에 \(t\mapsto1/t\)를 적용하면 다음 형태로 정리할 수 있습니다.
-        </p>
-        $$
-        \boxed{
-        \begin{aligned}
-        \pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s)
-        ={}&-\frac1s-\frac1{1-s}\\
-        &+\frac12\int_1^{\infty}[\theta(t)-1]
-        \left(t^{s/2-1}+t^{(1-s)/2-1}\right)dt.
-        \end{aligned}
-        }
-        $$
-
-        <p>
-          오른쪽의 적분은 \(t\to\infty\)에서 빠르게 감소하기 때문에 원래 급수가 수렴하지 않던 영역까지 같은 함수를 이어 주는 표현이 됩니다.
-          이것이 해석적 연속을 실제로 만들어 내는 다리입니다.
-        </p>
-
-        <p>또한 오른쪽 식은 \(s\)와 \(1-s\)를 서로 바꿔도 같은 모양입니다. 따라서</p>
-        $$
-        \boxed{
-        \pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s)
-        =\pi^{-(1-s)/2}\Gamma\left(\frac{1-s}{2}\right)\zeta(1-s)
-        }
-        $$
-        <p>라는 함수방정식의 대칭 형태가 나타납니다.</p>
-
-        <h3>6단계: \(\sin\)은 마지막 정리 과정에서 등장한다</h3>
-        <p>감마 함수의 반사 공식</p>
-        $$
-        \Gamma(z)\Gamma(1-z)=\frac{\pi}{\sin(\pi z)}
-        $$
-        <p>과 duplication 공식을 이용해 감마 함수 부분을 정리하면</p>
+        <h3>3단계: 세타 대칭</h3>
+        <p>Poisson 합 공식에서</p>
+        $$\boxed{\theta(t)=t^{-1/2}\theta(1/t)}$$
+        <p>라는 대칭이 나옵니다.</p>
+        <p>이 대칭을 Mellin 표현에 적용하면 \(s\)와 \(1-s\)가 서로 연결되고, 감마 인자를 정리하면</p>
         $$
         \boxed{
         \zeta(s)=2^s\pi^{s-1}\sin\left(\frac{\pi s}{2}\right)\Gamma(1-s)\zeta(1-s)
         }
         $$
-        <p>가 됩니다.</p>
+        <p>라는 함수방정식을 얻습니다.</p>
 
         <div class="box key math-summary">
-          <strong>급수에서 함수방정식까지의 실제 흐름</strong>
+          <strong>흐름</strong>
           $$
           \boxed{
-          \sum n^{-s}\Longrightarrow\text{감마 적분}\Longrightarrow e^{-\pi n^2t}\text{의 합}
-          \Longrightarrow\theta(t)\Longrightarrow t\leftrightarrow1/t\Longrightarrow s\leftrightarrow1-s
-          \Longrightarrow\sin(\pi s/2)
+          \sum n^{-s}
+          \Longrightarrow
+          \theta(t)
+          \Longrightarrow
+          t\leftrightarrow1/t
+          \Longrightarrow
+          s\leftrightarrow1-s
           }
           $$
-          <p>
-            \(\sin\)은 원래 급수에서 직접 나온 것이 아닙니다.
-            먼저 세타 대칭에서 \(s\leftrightarrow1-s\)가 나오고, 그 뒤 감마 함수들을 정리하면서 \(\sin(\pi s/2)\)가 나타납니다.
-          </p>
         </div>
       </section>
 
       <section id="zeros">
         <h2>4. 비자명한 영점은 어디에 있는가?</h2>
-        <p>제타 함수 속의 소수 정보를 다시 소수의 분포로 바꾸는 공식에 영점들이 나타나므로, 이제</p>
-        $$
-        \boxed{\zeta(s)=0\text{이 되는 복소수 }s\text{는 어디에 있는가?}}
-        $$
-        <p>라는 질문이 핵심이 됩니다.</p>
-
-        <p>함수방정식의 \(\sin(\pi s/2)\) 인자와 감마 함수의 극을 함께 살펴보면 음의 짝수</p>
+        <p>자명한 영점은</p>
         $$-2,-4,-6,\ldots$$
-        <p>에서 제타 함수가 0이 됩니다. 이들은 <strong>자명한 영점</strong>입니다.</p>
-
-        <p>
-          오늘날 알려진 정확한 위치 분류에는 서로 다른 결과들이 함께 쓰입니다.
-          Euler product는 \(\operatorname{Re}(s)\gt1\)에서 영점이 없음을 보여 줍니다.
-          함수방정식은 왼쪽 반평면의 영점 구조를 오른쪽과 연결하고, 음의 짝수에 자명한 영점이 있음을 보여 줍니다.
-          그러나 경계선 \(\operatorname{Re}(s)=1\)에 영점이 없다는 사실은 Euler product만으로 나오지 않습니다.
-          이는 Hadamard와 de la Vallée Poussin이 1896년에 증명한 소수정리의 핵심 정리입니다.
-        </p>
-
-        <div class="box ok">
-          <strong>따라서 비자명한 영점의 정확한 위치 범위는</strong>
-          $$\boxed{0\lt\operatorname{Re}(s)\lt1}$$
-          입니다. 이 열린 띠를 <strong>임계띠</strong>라고 부릅니다.
-          \(\operatorname{Re}(s)=0\)과 \(\operatorname{Re}(s)=1\)은 임계띠의 경계선이며 비자명한 영점은 그 경계선 위에도 없습니다.
-        </div>
-
+        <p>이고, 비자명한 영점은</p>
+        $$\boxed{0\lt\operatorname{Re}(s)\lt1}$$
+        <p>인 열린 임계띠 안에 있습니다.</p>
         <div class="box warn">
           <strong>임계띠는 원래 급수의 새로운 수렴영역이 아닙니다.</strong>
-          \(0\lt\operatorname{Re}(s)\lt1\)에서 원래 Dirichlet 급수가 수렴한다는 뜻이 아닙니다.
           해석적으로 연속된 \(\zeta(s)\)의 비자명한 영점들이 이 영역에 있다는 뜻입니다.
         </div>
       </section>
 
       <section id="critical-center">
         <h2>5. 왜 \(1/2\)이 특별해지는가?</h2>
-        <p>계산된 비자명한 영점들이 \(\operatorname{Re}(s)=1/2\)에 나타나는 현상은 함수방정식의 구조와도 맞물립니다. 함수방정식에서 가장 중요한 대칭은</p>
+        <p>함수방정식의 핵심 대칭은</p>
         $$\boxed{s\leftrightarrow1-s}$$
-        <p>입니다.</p>
-        <p>실수부만 \(\sigma=\operatorname{Re}(s)\)라고 쓰면</p>
-        $$\boxed{\sigma\leftrightarrow1-\sigma}$$
-        <p>가 됩니다. 이 좌우 변환의 중심은</p>
+        <p>입니다. 실수부만 보면</p>
+        $$\sigma\leftrightarrow1-\sigma$$
+        <p>이고 중심은</p>
         $$\sigma=1-\sigma\quad\Longrightarrow\quad\boxed{\sigma=\frac12}$$
         <p>입니다.</p>
-        <p>복소켤레 대칭까지 함께 보면</p>
-        $$\sigma+it\longmapsto1-\sigma+it$$
-        <p>이므로 복소평면에서 실제 좌우 대칭축은</p>
-        $$\boxed{\operatorname{Re}(s)=\frac12}$$
-        <p>라는 수직선입니다.</p>
-
-        <table>
-          <thead><tr><th>단계</th><th>그 단계에서 알게 되는 것</th></tr></thead>
-          <tbody>
-            <tr><td>오일러의 연결</td><td>제타 함수가 소수 정보를 담고 있음을 알게 된다.</td></tr>
-            <tr><td>해석적 연속</td><td>원래 급수가 수렴하지 않는 영역에서도 같은 제타 함수를 다룬다.</td></tr>
-            <tr><td>명시적 공식</td><td>제타 함수의 비자명한 영점들이 소수 분포의 보정항으로 등장한다.</td></tr>
-            <tr><td>함수방정식</td><td>임계띠의 좌우 대칭 중심이 \(\operatorname{Re}(s)=1/2\)임을 보여 준다.</td></tr>
-            <tr><td>리만가설</td><td>모든 비자명한 영점이 그 대칭축 자체 위에 있다고 주장한다.</td></tr>
-          </tbody>
-        </table>
 
         <div class="box key math-summary">
           <strong>대칭축의 존재와 리만가설은 서로 다른 명제입니다.</strong>
           $$\boxed{\frac12=\text{대칭의 중심}\quad\not\Rightarrow\quad\text{모든 영점이 그 중심선 위에 존재}}$$
-          <p>함수방정식은 \(1/2\)이 특별한 대칭축임을 보여 줍니다. 그러나 축 밖에 영점이 있다면 반대편에 대칭 영점이 함께 존재하는 것도 함수방정식과 모순되지 않습니다.</p>
+          <p>함수방정식은 \(1/2\)이 특별한 대칭축임을 보여 주지만, 그것만으로 영점이 반드시 축 위에 있어야 한다고 결론낼 수는 없습니다.</p>
         </div>
       </section>
 
-      <section id="symmetry">
-        <h2>6. 영점에 작용하는 두 대칭</h2>
-        <p>비자명한 영점 하나를</p>
-        $$\rho=\sigma+it,\qquad 0\lt\sigma\lt1,\qquad t\neq0$$
-        <p>라고 하겠습니다.</p>
-        <p>제타 함수에는 복소켤레 대칭과 함수방정식 대칭이 있습니다.</p>
-        $$\zeta(\overline{s})=\overline{\zeta(s)},\qquad\zeta(\rho)=0\Rightarrow\zeta(1-\rho)=0.$$
-        <p>따라서 \(\rho\)가 실제 영점이면 다음 네 표현이 모두 영점이 됩니다.</p>
-        $$\boxed{\rho,\quad\overline{\rho},\quad1-\rho,\quad1-\overline{\rho}}$$
-        <p>좌표로 풀면</p>
-        $$\boxed{\sigma+it,\quad\sigma-it,\quad(1-\sigma)-it,\quad(1-\sigma)+it}$$
-        <p>입니다.</p>
-      </section>
+      <section id="pair-symmetry">
+        <h2>6. 위쪽 반평면에서는 좌우 대칭쌍만 보면 충분하다</h2>
+        <p>
+          복소켤레 대칭으로 아래쪽 반평면의 영점은 위쪽 반평면의 영점을 그대로 반영합니다.
+          따라서 영점의 좌우 위치를 연구할 때는 \(t\gt0\)인 위쪽 반평면만 보아도 충분합니다.
+        </p>
+        <p>가상의 임계선 밖 영점을</p>
+        $$\boxed{\rho=\frac12+a+i\gamma,\qquad0\lt a\lt\frac12,\quad\gamma\gt0}$$
+        <p>라고 놓으면 함수방정식과 켤레대칭을 결합한 좌우 반사는</p>
+        $$
+        \boxed{
+        \frac12+a+i\gamma
+        \longleftrightarrow
+        \frac12-a+i\gamma
+        }
+        $$
+        <p>가 됩니다.</p>
 
-      <section id="inside">
-        <h2>7. 네 점은 모두 임계띠 안에 남는다</h2>
-        <p>원래 조건이</p>
-        $$0\lt\sigma\lt1$$
-        <p>이면</p>
-        $$0\lt1-\sigma\lt1$$
-        <p>도 성립합니다.</p>
-        <div class="box ok">
-          <strong>임계띠 보존</strong>
-          네 점의 실수부는 \(\sigma\) 또는 \(1-\sigma\)입니다. 둘 다 \(0\)과 \(1\) 사이이므로 네 점 모두 임계띠 안에 있습니다.
-        </div>
-      </section>
-
-      <section id="distinct">
-        <h2>8. 언제 실제로 서로 다른 네 점인가?</h2>
-        <p>위아래 점이 같아지려면</p>
-        $$\sigma+it=\sigma-it\quad\Longleftrightarrow\quad t=0$$
-        <p>이어야 합니다. 비자명한 영점에서는 \(t\neq0\)이므로 위아래 점은 서로 다릅니다.</p>
-        <p>좌우 점이 같아지려면</p>
-        $$\sigma+it=(1-\sigma)+it\quad\Longleftrightarrow\quad\sigma=\frac12$$
-        <p>이어야 합니다.</p>
         <div class="box key math-summary">
-          $$\boxed{0\lt\sigma\lt1,\quad t\neq0,\quad\sigma\neq\frac12\Rightarrow\text{서로 다른 네 복소수 영점}}$$
-          <p>이 결론은 \(\rho=\sigma+it\)가 실제 제타 영점이라는 전제 아래에서 성립합니다.</p>
+          <strong>이 글에서는 이 좌우 대칭쌍만 추적합니다.</strong>
+          <p>
+            임계선 위에서는 \(a=0\)이므로 좌우 두 위치가 하나의 위치로 겹칩니다.
+            따라서 리만가설은 위쪽 반평면에서 <strong>서로 다른 좌우 대칭 영점쌍이 존재하지 않는다</strong>는 명제로 볼 수 있습니다.
+          </p>
         </div>
       </section>
 
       <section id="shift">
-        <h2>9. \(z=s-1/2\)로 중심을 옮기면</h2>
-        <p>대칭의 중심이 \(1/2\)이므로 새 변수</p>
-        $$z=s-\frac12$$
-        <p>를 사용하면 구조가 더 단순해집니다.</p>
-        $$0\lt\operatorname{Re}(s)\lt1\quad\Longleftrightarrow\quad-\frac12\lt\operatorname{Re}(z)\lt\frac12.$$
-        <p>\(a=\sigma-1/2\)라고 하면 네 점은</p>
-        $$\boxed{a+it,\quad a-it,\quad-a+it,\quad-a-it}$$
-        <p>가 됩니다. 임계띠 조건은</p>
-        $$\boxed{-\frac12\lt a\lt\frac12}$$
-        <p>이고, \(a=0\)은 바로 원래 좌표의 \(\operatorname{Re}(s)=1/2\)를 뜻합니다.</p>
+        <h2>7. 중심 좌표 \(a\)로 바꾸기</h2>
+        <p>대칭의 중심을 직접 보려면</p>
+        $$s=\frac12+a+i\gamma$$
+        <p>라고 둡니다. 임계띠의 오른쪽 절반은</p>
+        $$\boxed{0\lt a\lt\frac12}$$
+        <p>이고 임계선은</p>
+        $$\boxed{a=0}$$
+        <p>입니다.</p>
+        <p>
+          이제 문제는 아주 단순해집니다. 모든 \(\gamma\)에 대해 \(0\lt a\lt1/2\)에서 제타 함수가 0이 되지 않음을 보이면 충분합니다.
+        </p>
       </section>
 
-      <section id="orbits">
-        <h2>10. 두 대칭으로 생기는 2점 구조와 4점 구조</h2>
-        <p>아래에서는 두 대칭으로 하나의 영점에서 생성되는 서로 다른 점들의 집합을 편의상 <strong>“궤도”</strong>라고 부르겠습니다. 이는 이 글에서 구조를 설명하기 위한 표현이며, 리만가설의 표준 정리 이름은 아닙니다.</p>
-        <table>
-          <thead><tr><th>비자명한 영점의 위치</th><th>서로 다른 대칭점 수</th></tr></thead>
-          <tbody>
-            <tr><td>\(\operatorname{Re}(\rho)=1/2\)</td><td>2개</td></tr>
-            <tr><td>\(0\lt\operatorname{Re}(\rho)\lt1\), \(\operatorname{Re}(\rho)\neq1/2\)</td><td>4개</td></tr>
-          </tbody>
-        </table>
-        <p>임계선 위에서는</p>
-        $$1-\rho=\overline{\rho},\qquad1-\overline{\rho}=\rho$$
-        <p>가 되어 네 표현이 두 개의 서로 다른 점으로 겹칩니다.</p>
+      <section id="xi">
+        <h2>8. \(\xi(s)\)로 영점 문제를 정리한다</h2>
+        <p>리만의 완성된 xi 함수를</p>
+        $$
+        \boxed{
+        \xi(s)=\frac12s(s-1)\pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s)
+        }
+        $$
+        <p>라고 정의합니다.</p>
+        <p>\(\xi(s)\)는 entire 함수이고 임계띠에서는 \(\zeta(s)\)의 비자명한 영점을 그대로 보존합니다. 또한</p>
+        $$\boxed{\xi(s)=\xi(1-s),\qquad\xi(\overline{s})=\overline{\xi(s)}}$$
+        <p>가 성립합니다.</p>
+
+        <p>고정된 높이 \(\gamma\)에서</p>
+        $$
+        \boxed{
+        F(a,\gamma)=\xi\left(\frac12+a+i\gamma\right)
+        }
+        $$
+        <p>라고 놓으면</p>
+        $$\boxed{F(-a,\gamma)=\overline{F(a,\gamma)}}$$
+        <p>입니다. 따라서</p>
+        $$F(a,\gamma)=A(a,\gamma)+iB(a,\gamma)$$
+        <p>로 쓰면</p>
+        $$\boxed{A(-a,\gamma)=A(a,\gamma),\qquad B(-a,\gamma)=-B(a,\gamma)}$$
+        <p>가 됩니다. 즉 \(A\)는 \(a\)에 대해 짝함수이고 \(B\)는 홀함수입니다.</p>
+      </section>
+
+      <section id="theta-fourier">
+        <h2>9. 세타 커널에서 \(\cosh\)와 \(\sinh\)가 나타난다</h2>
+        <p>
+          표준적인 Riemann \(\Xi\) 함수는 Jacobi 세타 함수에서 유도되는 빠르게 감소하는 실수 짝함수 커널 \(\Phi(u)\)의 Fourier cosine transform으로 표현할 수 있습니다.
+          정규화 상수를 생략해 구조만 쓰면
+        </p>
+        $$
+        \Xi(z)=\int_0^\infty \Phi(u)\cos(zu)\,du,
+        \qquad
+        \Xi(z)=\xi\left(\frac12+iz\right).
+        $$
+        <p>가상의 off-critical 위치 \(s=1/2+a+i\gamma\)는 \(z=\gamma-ia\)에 해당합니다. 그러면</p>
+        $$
+        \cos((\gamma-ia)u)
+        =
+        \cos(\gamma u)\cosh(au)
+        +i\sin(\gamma u)\sinh(au).
+        $$
+        <p>따라서</p>
+        $$
+        \boxed{
+        A(a,\gamma)
+        =\int_0^\infty\Phi(u)\cosh(au)\cos(\gamma u)\,du
+        }
+        $$
+        $$
+        \boxed{
+        B(a,\gamma)
+        =\int_0^\infty\Phi(u)\sinh(au)\sin(\gamma u)\,du
+        }
+        $$
+        <p>라는 두 실함수로 분해됩니다.</p>
+
         <div class="box key math-summary">
-          $$\boxed{|\operatorname{Orb}(\rho)|=2\iff\operatorname{Re}(\rho)=\frac12}$$
-          $$\boxed{|\operatorname{Orb}(\rho)|=4\iff\operatorname{Re}(\rho)\neq\frac12}$$
-          <p>두 식 모두 \(\rho\)가 비자명한 제타 영점이라는 전제 아래의 분류입니다.</p>
+          <strong>임계선 \(a=0\)은 특별합니다.</strong>
+          $$\cosh(0)=1,\qquad\sinh(0)=0$$
+          <p>이므로</p>
+          $$\boxed{B(0,\gamma)=0}$$
+          <p>가 모든 \(\gamma\)에 대해 자동입니다. 임계선 위 영점은 \(A(0,\gamma)=0\)인 곳에서 나타납니다.</p>
         </div>
-      </section>
 
-      <section id="hypothetical">
-        <h2>11. 탐구 노트: 가상의 반례 영점을 잡아 보면</h2>
         <div class="box warn">
-          <strong>이 절부터는 표준적인 리만가설 해설과 이 글의 탐구적 재표현을 구분해야 합니다.</strong>
-          아래의 \(M_\beta(a)\) 구성과 수평 단조성 아이디어는 리만가설의 알려진 증명법이나 정리가 아닙니다. 정확한 대칭 조건에서 어떤 반례 구조가 강제되는지를 살펴보기 위한 <strong>탐구용 좌표화</strong>입니다.
+          <strong>\(a\gt0\)에서 \(\sinh(au)\gt0\)이라고 해서 \(B(a,\gamma)\neq0\)가 되는 것은 아닙니다.</strong>
+          \(\sin(\gamma u)\)가 부호를 계속 바꾸므로 양수와 음수 기여가 적분에서 상쇄될 수 있습니다.
+          따라서 실제로 필요한 것은 \(A\)와 \(B\)가 동시에 0이 되는 점을 배제하는 것입니다.
         </div>
-        <p>리만가설이 거짓이라고 가정했을 때 존재해야 하는 실제 제타 영점 하나를 잡아 보겠습니다. 좌우 대칭 때문에 오른쪽 반쪽만 보아도 충분하므로</p>
-        $$\boxed{\rho=\frac12+\alpha+i\beta,\qquad0\lt\alpha\lt\frac12,\qquad\beta\neq0,\qquad\zeta(\rho)=0}$$
-        <p>라고 놓습니다. 여기서 \(\alpha\)와 \(\beta\)는 임의로 정한 숫자가 아니라, 존재한다고 가정한 실제 반례 영점의 좌표입니다.</p>
 
-        <h3>여기서 왜 \(\xi(s)\)를 사용하는가?</h3>
-        <p>지금까지는 원래 함수인 \(\zeta(s)\)를 중심으로 보았습니다. 이제 영점의 대칭을 더 간단하게 다루기 위한 표준 도구로 리만의 \(\xi\) 함수를 정의합니다.</p>
-        $$\boxed{\xi(s)=\frac12s(s-1)\pi^{-s/2}\Gamma\left(\frac{s}{2}\right)\zeta(s)}$$
-        <div class="box ok">
-          <strong>\(\xi(s)\) 자체는 표준적인 함수입니다.</strong>
-          \(\xi(s)\)는 복소평면 전체에서 해석적인 entire 함수이고, 임계띠 안에서는 \(\zeta(s)\)의 비자명한 영점을 그대로 보존하면서 대칭을 간단한 형태로 보여 줍니다.
-        </div>
-        $$\boxed{\zeta(s)=0\quad\Longleftrightarrow\quad\xi(s)=0,\qquad0\lt\operatorname{Re}(s)\lt1}$$
-        <p>그리고 함수방정식은</p>
-        $$\xi(s)=\xi(1-s),\qquad\xi(\overline{s})=\overline{\xi(s)}$$
-        <p>처럼 간단하게 정리됩니다.</p>
-        <p>따라서 첫 점이 영점이라는 가정 하나로</p>
-        $$\boxed{\begin{aligned}
-        \xi\left(\frac12+\alpha+i\beta\right)&=0,\\
-        \xi\left(\frac12+\alpha-i\beta\right)&=0,\\
-        \xi\left(\frac12-\alpha+i\beta\right)&=0,\\
-        \xi\left(\frac12-\alpha-i\beta\right)&=0
-        \end{aligned}}$$
-        <p>가 됩니다. \(0\lt\alpha\lt1/2\)이므로 네 점은 모두 임계띠 안에 있으며 서로 다릅니다.</p>
-
-        <h3>탐구용 함수 \(M_\beta(a)\)</h3>
-        <p>고정된 높이 \(\beta\)에서</p>
-        $$M_\beta(a)=\left|\xi\left(\frac12+a+i\beta\right)\right|^2,\qquad-\frac12\lt a\lt\frac12$$
-        <p>를 정의합니다. 대칭으로</p>
-        $$\boxed{M_\beta(-a)=M_\beta(a)}$$
-        <p>이고, 가상의 반례 영점 때문에</p>
-        $$\boxed{M_\beta(\alpha)=M_\beta(-\alpha)=0}$$
-        <p>가 반드시 성립합니다.</p>
-        <p>만약 \(\rho\)의 중복도가 \(m\)이라면 영점 근처에서</p>
-        $$\xi\left(\frac12+a+i\beta\right)=(a-\alpha)^m g(a),\qquad g(\alpha)\neq0$$
-        <p>로 쓸 수 있으므로</p>
-        $$M_\beta(a)=|a-\alpha|^{2m}|g(a)|^2.$$
-        <p>따라서 충분히 영점에 가까운 곳에서는 \(a=\alpha\)의 왼쪽에서 \(M_\beta(a)\)가 0을 향해 감소하고, 오른쪽에서는 0에서 증가하는 국소 구조가 생깁니다.</p>
-        <div class="box key math-summary">
-          <strong>가상 반례가 강제하는 국소 구조</strong>
-          $$\boxed{\alpha\gt0\text{인 반례 영점}\Rightarrow M_\beta(\alpha)=0\Rightarrow0\lt a\lt\alpha\text{의 어떤 구간에서 }M_\beta'(a)\lt0}$$
-        </div>
-        <p>반대로 영점의 존재를 미리 가정하지 않은 독립적인 방법으로</p>
-        $$\boxed{M_b'(a)\gt0\qquad\left(0\lt a\lt\frac12,\ \text{모든 실수 }b\right)}$$
-        <p>를 증명한다면 축 밖의 영점은 존재할 수 없습니다. 다만 이것은 <strong>리만가설을 함의하는 매우 강한 충분조건</strong>이며 현재 확보된 표준 정리가 아닙니다.</p>
+        <p>즉 off-critical zero가 존재하려면</p>
+        $$\boxed{A(a,\gamma)=0,\qquad B(a,\gamma)=0}$$
+        <p>가 \(0\lt a\lt1/2\)에서 동시에 성립해야 합니다.</p>
       </section>
 
-      <section id="limit">
-        <h2>12. 탐구 노트의 한계</h2>
-        <div class="box warn">
-          <strong>중요</strong>
-          가상의 반례 영점을 잡으면 4개의 대칭 영점과 \(M_\beta(a)\)의 국소 구조는 정확히 따라옵니다. 그러나 대칭, 임계띠, 영점 조건만으로 \(M_b'(a)\gt0\) 같은 전역적인 부호 조건은 나오지 않습니다.
-        </div>
-        <p>현재 이 탐구에서 확실히 얻은 것은</p>
-        $$\boxed{\text{반례 영점이 존재한다면 특정 높이에서 }M_\beta(a)\text{가 }0\text{까지 내려가야 한다}}$$
-        <p>는 구조입니다.</p>
-        <p>진짜 증명으로 가려면 제타 함수의 독립적인 다른 성질에서 축 밖의 영점을 금지하는 조건을 얻어야 합니다. 그 단계는 이 글에서 확보되지 않았으며, 리만가설 자체도 여전히 미해결 문제입니다.</p>
+      <section id="wronskian">
+        <h2>10. \(A\)와 \(B\)를 묶는 Wronskian</h2>
+        <p>\(F=A+iB\)가 복소해석 함수이므로 Cauchy-Riemann 관계에서</p>
+        $$\boxed{A_a=B_\gamma,\qquad A_\gamma=-B_a}$$
+        <p>를 얻습니다.</p>
+        <p>이제</p>
+        $$W(a,\gamma)=A B_\gamma-B A_\gamma$$
+        <p>라고 정의하면</p>
+        $$
+        \begin{aligned}
+        W
+        &=AA_a+BB_a\\
+        &=\frac12\frac{\partial}{\partial a}(A^2+B^2).
+        \end{aligned}
+        $$
+        <p>따라서</p>
+        $$
+        \boxed{
+        W(a,\gamma)
+        =\frac12\frac{\partial}{\partial a}
+        \left|\xi\left(\frac12+a+i\gamma\right)\right|^2
+        }
+        $$
+        <p>입니다.</p>
+
         <div class="box key math-summary">
-          <strong>표준 내용과 탐구 내용을 구분한 전체 흐름</strong>
-          $$\boxed{\begin{array}{c}
+          <strong>만약 다음 부등식을 증명한다면</strong>
+          $$\boxed{W(a,\gamma)\gt0\qquad(0\lt a\lt1/2,\ \gamma\in\mathbb R)}$$
+          <p>
+            \(|\xi|^2\)는 임계선에서 오른쪽으로 이동할수록 엄격히 증가합니다.
+            따라서 \(a\gt0\)인 곳에서 다시 0이 될 수 없고, 좌우 대칭 영점쌍도 존재할 수 없습니다.
+          </p>
+        </div>
+
+        <div class="box warn">
+          <strong>중요: 이 양성은 현재 증명된 사실이 아닙니다.</strong>
+          \(|\xi(\sigma+it)|\)의 수평 단조성을 모든 \(\sigma\gt1/2\)에 대해 확보하는 것은 리만가설과 동치인 형태의 알려진 재정식화입니다.
+          따라서 \(W\gt0\)를 목표로 세우는 것은 문제를 해결한 것이 아니라, RH를 하나의 구체적인 양성 문제로 바꾼 것입니다.
+        </div>
+
+        <p>
+          이 수평 단조성 관점은 기존 문헌에 있습니다. Sondow와 Dumitrescu는 \(|\xi(s)|\)의 수평 단조성과 RH의 동치 관계를 연구했습니다.
+          따라서 이 글의 \(F(a,\gamma)\), \(A\), \(B\), \(W\) 좌표화는 탐구를 위한 표현이지만, 핵심 단조성 문제 자체는 이미 알려진 RH 동치 문제입니다.
+        </p>
+        <p>
+          참고:
+          <a href="https://arxiv.org/abs/1005.1104" target="_blank" rel="noopener">Sondow &amp; Dumitrescu, A monotonicity property of Riemann's xi function and a reformulation of the Riemann Hypothesis</a>.
+        </p>
+      </section>
+
+      <section id="status">
+        <h2>11. 현재 탐구의 위치: 남은 것은 진동항의 제어다</h2>
+        <p>
+          \(W\)를 세타 커널의 이중적분으로 전개하면 \(\cosh\)와 \(\sinh\)에서 나오는 계수에는 양의 구조가 생기지만,
+          \(\cos(\gamma(u-v))\), \(\cos(\gamma(u+v))\) 같은 진동항이 남습니다.
+          이 진동항 때문에 단순히 \(\cosh^2x-\sinh^2x=1\)만으로 \(W\gt0\)를 결론낼 수는 없습니다.
+        </p>
+
+        <p>좌표를</p>
+        $$p=u+v,\qquad q=u-v$$
+        <p>로 바꾸면 커널에는</p>
+        $$
+        \boxed{
+        G_p(q)=
+        \Phi\left(\frac{p+q}{2}\right)
+        \Phi\left(\frac{p-q}{2}\right)
+        }
+        $$
+        <p>같은 형태가 나타납니다. 따라서 현재의 핵심 질문은 다음과 같습니다.</p>
+
+        <div class="box key math-summary">
+          <strong>현재 연구 질문</strong>
+          $$
+          \boxed{
+          \text{theta kernel의 positivity·concavity·total positivity가}
+          \\[-2pt]
+          \text{cosine 진동을 충분히 제어하여 }W(a,\gamma)\gt0\text{를 강제하는가?}
+          }
+          $$
+        </div>
+
+        <p>
+          이 방향은 Hermite-Biehler 이론, Laguerre-Pólya class, Turán/Laguerre 부등식, total positivity 및 variation-diminishing 이론과 연결됩니다.
+          관련 고전 연구에서는 Fourier 변환의 실수부와 허수부 영점의 interlacing 및 Wronskian 부호를 사용해 실영점 문제를 다룹니다.
+        </p>
+
+        <div class="box warn">
+          <strong>현재까지의 한계</strong>
+          <p>
+            우리는 좌우 대칭쌍 문제를 \(A=B=0\)의 동시해 문제로 바꾸고, 다시 \(W\)의 양성 문제로 압축했습니다.
+            하지만 \(0\lt a\lt1/2\) 전체에서 \(W\gt0\)라는 마지막 부등식은 아직 얻지 못했습니다.
+            이를 증명하면 리만가설 수준의 결과가 되므로, 수치 관측이나 낮은 차수의 concavity만으로는 충분하지 않습니다.
+          </p>
+        </div>
+
+        <div class="box key math-summary">
+          <strong>현재까지의 흐름</strong>
+          $$
+          \boxed{
+          \begin{array}{c}
           \text{소수와 Euler product}\\
           \Downarrow\\
-          \text{해석적 연속과 함수방정식}\\
+          \text{세타 함수와 Mellin 변환}\\
           \Downarrow\\
-          \text{명시적 공식에서 영점과 소수 분포가 연결}\\
+          s\leftrightarrow1-s\text{ 좌우 대칭}\\
           \Downarrow\\
-          \text{비자명한 영점과 }\operatorname{Re}(s)=1/2\text{ 대칭축}\\
+          s=\frac12+a+i\gamma\text{로 중심 이동}\\
           \Downarrow\\
-          \text{여기까지는 표준 이론}\\
+          F=A+iB\\
           \Downarrow\\
-          \text{가상 반례와 }M_\beta(a)\text{는 이 글의 탐구적 재표현}\\
+          A=0,\ B=0\text{의 동시해를 배제하는 문제}\\
           \Downarrow\\
-          \text{아직 증명은 아님}
-          \end{array}}$$
+          W=\frac12\partial_a|\xi|^2\text{의 양성 문제}\\
+          \Downarrow\\
+          \text{남은 핵심: theta kernel과 cosine 진동의 상호작용}
+          \end{array}
+          }
+          $$
         </div>
       </section>
 
       <section>
-        <h2>13. 한 문장 요약</h2>
+        <h2>12. 한 문장 요약</h2>
         <p class="lead">
-          제타 함수는 소수 정보를 담은 Euler product에서 출발해 복소평면으로 해석적 연속되며,
-          소수 분포를 다시 표현하는 명시적 공식 안에서 비자명한 영점들이 보정항으로 직접 등장합니다.
-          영점의 실수부는 이 보정항의 크기와 연결되고 함수방정식은 \(\operatorname{Re}(s)=1/2\)을 대칭축으로 만들지만,
-          모든 비자명한 영점이 실제로 그 축 위에 있다는 리만가설은 여전히 증명되지 않았습니다.
+          제타 함수의 함수방정식은 \(\operatorname{Re}(s)=1/2\)을 좌우 대칭축으로 만들며,
+          위쪽 반평면만 보면 리만가설은 임계선 밖의 서로 다른 좌우 대칭 영점쌍이 존재하지 않는다는 문제로 볼 수 있습니다.
+          세타 커널 표현에서는 이 문제가 \(A(a,\gamma)=B(a,\gamma)=0\)의 동시해 여부와 Wronskian \(W=\frac12\partial_a|\xi|^2\)의 양성 문제로 바뀌지만,
+          그 양성을 임계띠 내부 전체에서 증명하는 단계는 여전히 미해결입니다.
         </p>
       </section>
     </article>
